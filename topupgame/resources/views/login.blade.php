@@ -111,7 +111,8 @@
 
         <input type="checkbox" name="" id="chk" aria-hidden="true">
         <div class="signup">
-            <form action="" method="post">
+            <form action="/pengguna/insert" method="post">
+                @csrf
                 <label for="chk" aria-hidden="true">Sign Up</label>
                 <input type="text" name="username" id="username" placeholder="username">
                 <input type="password" name="password" id="password" placeholder="password">
@@ -124,7 +125,8 @@
         </div>
 
         <div class="login">
-            <form action="" method="post">
+            <form action="/pengguna/login" method="post">
+                @csrf
                 <label for="chk" aria-hidden="true">Login</label>
                 <input type="text" name="username" id="username" placeholder="username">
                 <input type="password" name="password" id="password" placeholder="password">

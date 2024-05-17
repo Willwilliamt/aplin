@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,10 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::prefix('pengguna')->group(function () {
+    Route::post('/insert', [PenggunaController::class, 'insert']);
+    Route::post('/update', [PenggunaController::class, 'update']);
+    Route::post('/delete', [PenggunaController::class, 'delete']);
+    Route::post('/login', [AuthController::class, 'login']);
+    });
