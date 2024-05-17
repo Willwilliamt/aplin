@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -21,6 +22,11 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/cruduser', [BarangController::class, 'index']);
+
+Route::get('/addbarang', function () {
+    return view('addbarang');
+});
 
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
@@ -28,3 +34,7 @@ Route::prefix('pengguna')->group(function () {
     Route::post('/delete', [PenggunaController::class, 'delete']);
     Route::post('/login', [AuthController::class, 'login']);
     });
+
+Route::prefix('user')->group(function () {
+    Route::post('/insert', [BarangController::class, 'insert']);
+});
