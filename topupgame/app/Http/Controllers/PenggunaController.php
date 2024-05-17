@@ -7,6 +7,19 @@ use App\Models\Pengguna;
 
 class PenggunaController extends Controller
 {
+    function index (){
+        $data = Pengguna::where("role", 0)->get();
+        return view('superadmin',[
+            'users' => $data
+        ]);
+    }
+    function promote (Request $request){
+    
+        $data = Pengguna::find($request->id);
+        $data->role = "1";
+        $data->save();
+        return redirect()->back();
+    }
     function insert(Request $request) {
 
         $data = new Pengguna;

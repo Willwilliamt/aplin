@@ -27,6 +27,13 @@ Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/addbarang', function () {
     return view('addbarang');
 });
+Route::get('/superadmin', function () {
+    return view('superadmin');
+});
+Route::prefix('superadmin')->group(function () {
+    Route::get('/', [PenggunaController::class, 'index']);
+    Route::post('/promote', [PenggunaController::class, 'promote']);
+});
 
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
