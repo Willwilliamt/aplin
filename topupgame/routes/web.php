@@ -38,3 +38,8 @@ Route::prefix('pengguna')->group(function () {
 Route::prefix('user')->group(function () {
     Route::post('/insert', [BarangController::class, 'insert']);
 });
+Route::controller(BarangController::class)->prefix('products')->group(function () {
+    Route::get('show/{id}', 'show')->name('products.show');  
+    Route::put('edit/{id}', 'update')->name('products.update');
+    Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+});
