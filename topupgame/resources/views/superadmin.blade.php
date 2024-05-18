@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
 
 <head>
     <meta charset="UTF-8">
@@ -601,3 +602,147 @@
 </body>
 
 </html>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+
+        .wrapper {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: #fff;
+            position: fixed;
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #343a40;
+        }
+
+        .sidebar ul.components {
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #7386d5;
+        }
+
+        .content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            transition: margin-left 0.3s, width 0.3s;
+        }
+
+        .top-nav {
+            background: #6c757d;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-nav .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                height: auto;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .top-nav .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin Panel</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <nav class="top-nav">
+                <div class="menu-toggle" id="menu-toggle">
+                    <span>&#9776;</span>
+                </div>
+                <h2>Dashboard</h2>
+            </nav>
+            <main>
+                <h1>Welcome to the Admin Dashboard</h1>
+                <p>Here you can manage users, view reports, and configure settings.</p>
+            </main>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+
+            menuToggle.addEventListener('click', function() {
+                if (sidebar.style.width === '250px' || sidebar.style.width === '') {
+                    sidebar.style.width = '0';
+                    content.style.marginLeft = '0';
+                    content.style.width = '100%';
+                } else {
+                    sidebar.style.width = '250px';
+                    content.style.marginLeft = '250px';
+                    content.style.width = 'calc(100% - 250px)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+>>>>>>> Stashed changes
