@@ -22,6 +22,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
     Route::post('/update', [PenggunaController::class, 'update']);
