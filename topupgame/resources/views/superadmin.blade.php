@@ -525,7 +525,7 @@
                     <button id="showAdminTable" class="btn">Show Admin Table</button>
                 </div>
                 <div class="user">
-                    <img src="Assets/customer01.jpg" alt="">
+                    <img src="{{ URL('customer01.jpg') }}" height="30px" width="30px">
                 </div>
             </div>
             <div class="details">
