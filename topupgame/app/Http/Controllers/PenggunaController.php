@@ -9,6 +9,7 @@ class PenggunaController extends Controller
 {
     function index (){
         $data = Pengguna::where("role", 0)->get();
+        
         return view('superadmin',[
             'users' => $data
         ]);
@@ -21,7 +22,6 @@ class PenggunaController extends Controller
         return redirect()->back();
     }
     function insert(Request $request) {
-
         $data = new Pengguna;
         $data->username = $request->username;
         $data->password = $request->password;

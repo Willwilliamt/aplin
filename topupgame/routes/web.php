@@ -22,11 +22,13 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-<<<<<<< Updated upstream
 Route::get('/cruduser', [BarangController::class, 'index']);
 
 Route::get('/addbarang', function () {
     return view('addbarang');
+});
+Route::get('/securityadmin', function () {
+    return view('securityadmin');
 });
 Route::get('/superadmin', function () {
     return view('superadmin');
@@ -35,11 +37,6 @@ Route::prefix('superadmin')->group(function () {
     Route::get('/', [PenggunaController::class, 'index']);
     Route::post('/promote', [PenggunaController::class, 'promote']);
 });
-=======
-Route::get('/superadmin', function () {
-    return view('superadmin');
-});
->>>>>>> Stashed changes
 
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
