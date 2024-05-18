@@ -485,6 +485,7 @@
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
+        
         <div class="navigation">
             <ul>
                 <li>
@@ -519,18 +520,20 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline" style="color: white;"></ion-icon>
                 </div>
-
+                <div class="toggle-buttons">
+                    <button id="showUserTable" class="btn">Show User Table</button>
+                    <button id="showAdminTable" class="btn">Show Admin Table</button>
+                </div>
                 <div class="user">
                     <img src="Assets/customer01.jpg" alt="">
                 </div>
             </div>
             <div class="details">
-                <div class="recentOrders">
+                <div id="userTable" class="recentOrders">
                     <div class="cardHeader">
                         <h2>Table User</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
-
                     <table>
                         <tr>
                             <th>Id User</th>
@@ -541,32 +544,72 @@
                             <th>Email</th>
                             <th>Action</th>
                         </tr>
-                        
                         @foreach ($users as $item)
-                            <tr>
-                                <td>{{$item['Id_user']}}</td>
-                                <td>{{$item['Username']}}</td>
-                                <td>{{$item['Password']}}</td>
-                                <td>{{$item['name']}}</td>
-                                <td>{{$item['phone']}}</td>
-                                <td>{{$item['email']}}</td>
-                                <td><form action="/superadmin/promote" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{$item['id_user']}}">
-                                    <button type="submit" class="btn">Promote</button>
-                                </form></td>
-                            </tr>
+                            @if ($item['Role'] == 0)
+                                <tr>
+                                    <td>{{ $item['Id_user'] }}</td>
+                                    <td>{{ $item['Username'] }}</td>
+                                    <td>{{ $item['Password'] }}</td>
+                                    <td>{{ $item['name'] }}</td>
+                                    <td>{{ $item['phone'] }}</td>
+                                    <td>{{ $item['email'] }}</td>
+                                    <td>
+                                        <form action="/superadmin/promote" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $item['Id_user'] }}">
+                                            <button type="submit" class="btn">Promote</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif 
                         @endforeach
-                        
                     </table>
                 </div>
-
-                <!-- ================= New Customers ================ -->
-                
+                <div id="adminTable" class="recentOrders" style="display: none;">
+                    <div class="cardHeader">
+                        <h2>Table SecurityAdmin</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table border="1">
+                        <tr>
+                            <th>Id Admin</th>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                        @foreach ($users as $admin)
+                            @if ($admin['Role'] == 1)
+                                <tr>
+                                    <td>{{ $admin['Id_user'] }}</td>
+                                    <td>{{ $admin['Username'] }}</td>
+                                    <td>{{ $admin['name'] }}</td>
+                                    <td>{{ $admin['email'] }}</td>
+                                    <td>
+                                        <form action="/superadmin/demote" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $admin['Id_user'] }}">
+                                            <button type="submit" class="btn">Demote</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <script >
+        document.getElementById('showUserTable').addEventListener('click', function() {
+            document.getElementById('userTable').style.display = 'block';
+            document.getElementById('adminTable').style.display = 'none';
+        });
+
+        document.getElementById('showAdminTable').addEventListener('click', function() {
+            document.getElementById('userTable').style.display = 'none';
+            document.getElementById('adminTable').style.display = 'block';
+        });
         let list = document.querySelectorAll(".navigation li");
 
         function activeLink() {

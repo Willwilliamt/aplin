@@ -36,6 +36,7 @@ Route::get('/superadmin', function () {
 Route::prefix('superadmin')->group(function () {
     Route::get('/', [PenggunaController::class, 'index']);
     Route::post('/promote', [PenggunaController::class, 'promote']);
+    Route::post('/demote', [PenggunaController::class, 'demote']);
 });
 
 Route::prefix('pengguna')->group(function () {

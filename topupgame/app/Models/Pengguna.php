@@ -11,12 +11,12 @@ class Pengguna extends Model
 
     protected $table = 'users';
 
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'Id_user';
 
     protected $fillable = [
-        'username',
-        'password',
-        'role'
+        'Username',
+        'Password',
+        'Role'
     ];
 
     public $timestamps = false;
