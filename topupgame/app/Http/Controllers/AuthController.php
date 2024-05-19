@@ -26,12 +26,12 @@ class AuthController extends Controller
         if($pengguna) {
             $request->session()->put('user',$username);
             echo session('user');
-            if ($pengguna->Role == 0) {
+            if ($pengguna->role == 0) {
                 return redirect('/');
-            } elseif ($pengguna->Role == 1) {
+            } elseif ($pengguna->role == 1) {
                 return redirect('/securityadmin');
             }
-             elseif ($pengguna->Role == 2) {
+             elseif ($pengguna->role == 2) {
                 return redirect('/superadmin');
             }
         } else {

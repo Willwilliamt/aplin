@@ -21,4 +21,26 @@ class BarangController extends Controller
         $barangs = Barang::all();
         return view('cruduser', compact('barangs'));
     }
+    public function show(string $id)
+    {
+        $product = Barang::findOrFail($id);
+  
+        return view('show', compact('product'));
+    }
+
+    public function update(Request $request, string $id) {
+        $product = Barang::findOrFail($id);
+        $product->nama_barang = $request->input('nama');
+        $product->harga_barang = $request->input('harga');
+        $product->id_kategori = $request->input('kategori');
+        $product->save();
+
+        return redirect('/cruduser');
+    }
+    public function destroy(string $id)
+    {
+        $product = Barang::findOrFail($id);
+        $product->delete();
+        return redirect('/cruduser');
+    }
 }
