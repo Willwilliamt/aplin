@@ -28,6 +28,10 @@ Route::get('/addbarang', function () {
     return view('addbarang');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
     Route::post('/update', [PenggunaController::class, 'update']);
