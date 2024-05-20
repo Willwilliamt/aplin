@@ -24,9 +24,7 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 
-Route::get('/addbarang', function () {
-    return view('addbarang');
-});
+Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', function () {
     return view('securityadmin');
 });
@@ -39,9 +37,6 @@ Route::prefix('superadmin')->group(function () {
     Route::post('/demote', [PenggunaController::class, 'demote']);
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
 
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
@@ -58,3 +53,6 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
     Route::put('edit/{id}', 'update')->name('products.update');
     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
 });
+
+Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
+Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');

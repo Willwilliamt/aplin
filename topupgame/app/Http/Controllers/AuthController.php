@@ -25,15 +25,17 @@ class AuthController extends Controller
 
         if($pengguna) {
             $request->session()->put('user',$username);
-            echo session('user');
-            if ($pengguna->role == 0) {
+            $request->session()->put('user_id', $pengguna->Id_user);
+       
+            if ($pengguna->role == 2) {
+               return redirect('/superadmin');
+           }
+           elseif ($pengguna->role == 1) {
+               return redirect('/securityadmin');
+           }
+            else if ($pengguna->role == 0) {
                 return redirect('/');
-            } elseif ($pengguna->role == 1) {
-                return redirect('/securityadmin');
-            }
-             elseif ($pengguna->role == 2) {
-                return redirect('/superadmin');
-            }
+            } 
         } else {
 
             return back()->with('error', 'Username atau password salah.');
