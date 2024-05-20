@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengguna;
+use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
@@ -40,4 +41,20 @@ class PenggunaController extends Controller
         $data->save();
         return redirect()->back();
     }
+
+    public function logout()
+    {
+
+        Session::flush();
+
+        return redirect('/login');
+    }
+
+    public function signup()
+    {
+        Session::flush();
+
+        return redirect('/login');
+    }
+
 }

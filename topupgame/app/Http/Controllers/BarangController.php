@@ -12,6 +12,7 @@ class BarangController extends Controller
         $data->nama_barang = $request->nama;
         $data->harga_barang = $request->harga;
         $data->id_kategori = $request->kategori;
+        $data->id_user = $request->session()->get('user_id');
         
 
         $data->save();

@@ -17,7 +17,7 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('/login', function () {
     return view('login');
@@ -39,9 +39,6 @@ Route::prefix('superadmin')->group(function () {
     Route::post('/demote', [PenggunaController::class, 'demote']);
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
 
 Route::prefix('pengguna')->group(function () {
     Route::post('/insert', [PenggunaController::class, 'insert']);
@@ -58,3 +55,6 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
     Route::put('edit/{id}', 'update')->name('products.update');
     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
 });
+
+Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
+Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
