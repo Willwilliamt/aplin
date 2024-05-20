@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\Kategori;
 class BarangController extends Controller
 {
     function insert(Request $request) {
-
         $data = new Barang;
         $data->nama_barang = $request->nama;
         $data->harga_barang = $request->harga;
@@ -18,9 +18,12 @@ class BarangController extends Controller
         $data->save();
         return redirect('/cruduser');
     }
-    public function index() {
-        $barangs = Barang::all();
-        return view('cruduser', compact('barangs'));
+    public function index(Request $request) {
+        $user_id = $request->session()->get('user_id');
+
+        $barangs = Barang::where('id_user', $user_id)->get();
+
+         return view('cruduser', compact('barangs'));
     }
     public function show(string $id)
     {
@@ -44,4 +47,12 @@ class BarangController extends Controller
         $product->delete();
         return redirect('/cruduser');
     }
+    public function add(Request $request) {
+        
+
+        $categories = Kategori::all();
+
+         return view('addbarang', compact('categories'));
+    }
+
 }

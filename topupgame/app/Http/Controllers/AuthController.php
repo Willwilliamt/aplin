@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         if($pengguna) {
             $request->session()->put('user',$username);
-            $request->session()->put('user_id', $pengguna->id);
+            $request->session()->put('user_id', $pengguna->Id_user);
        
             if ($pengguna->role == 2) {
                return redirect('/superadmin');

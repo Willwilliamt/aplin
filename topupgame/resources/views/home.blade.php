@@ -159,7 +159,8 @@
                 <span class="navbar-text text-white me-2">
                     Welcome, {{ Session::get('user') }}!
                 </span>
-                <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a>
+                <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a> &nbsp;
+                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a>
             @else
                 <a class="btn btn-warning text-uppercase text-white" href="/signup">Sign Up</a>
             @endif

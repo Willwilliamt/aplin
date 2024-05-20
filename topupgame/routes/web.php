@@ -24,9 +24,7 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 
-Route::get('/addbarang', function () {
-    return view('addbarang');
-});
+Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', function () {
     return view('securityadmin');
 });

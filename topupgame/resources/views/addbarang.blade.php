@@ -11,6 +11,10 @@
 <body>
     <div class="container">
         <h1 class="mb-0">Add Product</h1>
+        <span class="navbar-text text-black me-2">
+            Welcome, {{ Session::get('user') }}!
+            Welcome, {{ Session::get('user_id') }}!
+        </span>
         <hr />
         <form action="user/insert" method="POST" enctype="">
             @csrf
@@ -24,7 +28,12 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <input type="text" name="kategori" class="form-control" placeholder="Kategori">
+                    <select name="kategori" class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->Id_kategori }}">{{ $category->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                    
                 </div>
                 
             </div>

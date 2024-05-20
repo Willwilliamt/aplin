@@ -16,6 +16,9 @@
 </head>
 <body>
     <div class="container">
+        <span class="navbar-text text-white me-2">
+            Welcome, {{ Session::get('user') }}!
+        </span>
         <div class="d-flex align-items-center justify-content-between">
             <h1 class="mb-0">List Barang</h1>
             <a href="/" class="btn btn-primary">BACK</a>
@@ -40,7 +43,7 @@
                         <td class="align-middle">{{ $barang->Id_barang }}</td>
                         <td class="align-middle">{{ $barang->Nama_barang }}</td>
                         <td class="align-middle">{{ $barang->Harga_barang }}</td>
-                        <td class="align-middle">{{ $barang->id_kategori }}</td>
+                        <td class="align-middle">{{ $barang->kategori->nama_kategori}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic Example">
                                 <a href="{{ route('products.show', $barang->Id_barang) }}" type="button" class="btn btn-secondary">UPDATE</a>
