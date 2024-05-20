@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -23,10 +24,14 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
+Route::get('/crudkategori', [KategoriController::class, 'index']);
 
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', function () {
     return view('securityadmin');
+});
+Route::get('/addkategori', function () {
+    return view('addkategori');
 });
 Route::get('/superadmin', function () {
     return view('superadmin');
@@ -48,11 +53,21 @@ Route::prefix('pengguna')->group(function () {
 Route::prefix('user')->group(function () {
     Route::post('/insert', [BarangController::class, 'insert']);
 });
+Route::prefix('kategori')->group(function () {
+    Route::post('/insert', [KategoriController::class, 'insert']);
+});
 Route::controller(BarangController::class)->prefix('products')->group(function () {
     Route::get('show/{id}', 'show')->name('products.show');  
     Route::put('edit/{id}', 'update')->name('products.update');
     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
 });
+
+Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
+    Route::get('show/{id}', 'show')->name('kategori.show');  
+    Route::put('edit/{id}', 'update')->name('kategori.update');
+    Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
+});
+
 
 Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
