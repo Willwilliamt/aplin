@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -219,14 +220,15 @@
 
     <div class="cardBag p-5" id="category">
         <h1 class="text-center">Vouchers & Games</h1>
-        <div class="d-flex justify-content-center p-3">
-          <button class="btn btn-primary me-2">All</button>
-          <button class="btn btn-primary me-2">Mobile Games</button>
-          <button class="btn btn-primary">PC Games</button>
-        </div>
+<div class="d-flex justify-content-center p-3">
+    <button class="btn btn-primary me-2" id="allBtn">All</button>
+    @foreach($categories as $category)
+        <button class="btn btn-primary me-2" id="{{ $category->nama_kategori }}Btn">{{ $category->nama_kategori }}</button>
+    @endforeach
+</div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-3" id="ML">
                     <div class="card h-100">
                         <img src="mlbb.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -236,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-3" id="PUBG">
                     <div class="card h-100">
                         <img src="pubg.jpg" class="card-img-top" alt="..." height="245px">
                         <div class="card-body">
@@ -246,7 +248,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-3" id="VALORANT">
                     <div class="card h-100">
                         <img src="valorant.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -256,7 +258,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-3" id="GENSHIN">
                     <div class="card h-100">
                         <img src="genshin.jpg" class="card-img-top" alt="...">
                         <div class="card-body">

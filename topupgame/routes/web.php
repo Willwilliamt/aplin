@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,4 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
 
 Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
+Route::get('/', [KategoriController::class, 'home'])->name('home');
