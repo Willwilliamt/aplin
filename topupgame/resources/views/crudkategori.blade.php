@@ -512,11 +512,11 @@
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Kategori</span>
+                        <span class="title">Kategori</span>
                     </a>
                 </li>               
                 <li>
-                    <a href="/login">
+                    <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
