@@ -341,25 +341,15 @@
     
     <script>
    document.addEventListener("DOMContentLoaded", function() {
-  // Ambil semua tombol kategori dan tombol "All"
   var categoryButtons = document.querySelectorAll("#category button");
   var allButton = document.getElementById("allBtn");
-
-  // Tambahkan event listener untuk setiap tombol kategori
   categoryButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-      // Ambil ID kategori yang diklik (tanpa Btn suffix)
       var categoryId = this.id.replace("Btn", "").toUpperCase();
-
-      // Semua card
       var cards = document.querySelectorAll("#category .col-md-4");
-
-      // Sembunyikan semua card
       cards.forEach(function(card) {
         card.style.display = "none";
       });
-
-      // Tampilkan card dengan ID kategori yang sesuai
       if (categoryId === "ALL") {
         cards.forEach(function(card) {
           card.style.display = "block";
@@ -372,8 +362,6 @@
       }
     });
   });
-
-  // Tambahkan event listener untuk tombol "All"
   allButton.addEventListener("click", function() {
     var cards = document.querySelectorAll("#category .col-md-4");
     cards.forEach(function(card) {
