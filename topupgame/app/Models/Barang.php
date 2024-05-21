@@ -15,13 +15,15 @@ class Barang extends Model
     protected $fillable = [
         'nama_barang',
         'harga_barang',
-        'id_kategori'
+        'id_kategori',
+        'image'
     ];
 
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori', 'Id_kategori');
     }
+    
 
     public $timestamps = false;
 }

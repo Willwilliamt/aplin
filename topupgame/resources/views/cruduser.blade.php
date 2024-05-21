@@ -33,6 +33,7 @@
                     <th>Nama Barang</th>
                     <th>Harga Barang</th>
                     <th>Kategori</th>
+                    <th>Foto Barang</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@
                         <td class="align-middle">{{ $barang->Nama_barang }}</td>
                         <td class="align-middle">{{ $barang->Harga_barang }}</td>
                         <td class="align-middle">{{ $barang->kategori->nama_kategori}}</td>
+                        <td class="align-middle"><img src="{{ asset('uploads/barang/' . $barang->image) }}" alt="" width="100px" height="100px"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic Example">
                                 <a href="{{ route('products.show', $barang->Id_barang) }}" type="button" class="btn btn-secondary">UPDATE</a>

@@ -16,5 +16,10 @@ class Kategori extends Model
         'nama_kategori',
     ];
 
+    public function barangs()
+    {
+        return $this->hasMany(Barang::class, 'id_kategori', 'Id_kategori');
+    }
+
     public $timestamps = false;
 }

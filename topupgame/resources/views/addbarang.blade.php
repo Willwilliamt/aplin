@@ -16,7 +16,7 @@
             Welcome, {{ Session::get('user_id') }}!
         </span>
         <hr />
-        <form action="user/insert" method="POST" enctype="">
+        <form action="user/insert" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <div class="col">
@@ -36,6 +36,12 @@
                     
                 </div>
                 
+            </div>
+            <div class="row mb-3">
+                <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input">
+                    <label for="" class="custom-file-label">Choose File</label>
+                </div>
             </div>
     
             <div class="row">

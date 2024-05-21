@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <style>
                 
@@ -32,7 +34,7 @@
         background: linear-gradient(to bottom, #0f0c29,#302b63,#24243e);
         }
 
-        .container {
+        .containers {
         position: relative;
         width: 100%;
         }
@@ -484,7 +486,7 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
+    <div class="containers">
         
         <div class="navigation">
             <ul>
@@ -498,7 +500,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/superadmin">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -510,7 +512,7 @@
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Kategori</span>
+                        <span class="title">Kategori</span>
                     </a>
                 </li>               
                 <li>
@@ -524,88 +526,70 @@
             </ul>
         </div>
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline" style="color: white;"></ion-icon>
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h1 class="mb-0 text-white">Add Kategori</h1>
+                    
+                    <a href="/crudkategori" class="btn btn-primary">List Kategori</a>
                 </div>
-                <div class="toggle-buttons">
-                    <button id="showUserTable" class="btn">Show User Table</button>
-                    <button id="showAdminTable" class="btn">Show Admin Table</button>
-                </div>
-                <p style="color: white">Welcome, Security Admin {{session("user")}}</p>
-                <div class="user">
-                    <img src="{{ URL('customer01.jpg') }}" height="30px" width="30px">
-                </div>
-            </div>
-            <div class="details">
-                <div id="userTable" class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Table User</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Id User</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                        {{-- @foreach ($users as $item)
-                            @if ($item['Role'] == 0)
+                    <hr />
+                    {{-- <table class="table table text-white" >
+                        <thead class="table-primary">
+                            <tr>
+                                
+                                <th>ID</th>
+                                <th>Nama Kategori</th>
+                                <th>Action</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $barang)
                                 <tr>
-                                    <td>{{ $item['Id_user'] }}</td>
-                                    <td>{{ $item['Username'] }}</td>
-                                    <td>{{ $item['Password'] }}</td>
-                                    <td>{{ $item['name'] }}</td>
-                                    <td>{{ $item['phone'] }}</td>
-                                    <td>{{ $item['email'] }}</td>
+                                    
+                                    <td class="align-middle">{{ $barang->Id_kategori }}</td>
+                                    <td class="align-middle">{{ $barang->nama_kategori }}</td>
                                     <td>
-                                        <form action="/superadmin/promote" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $item['Id_user'] }}">
-                                            <button type="submit" class="btn">Promote</button>
-                                        </form>
+                                        <div class="btn-group" role="group" aria-label="Basic Example">
+                                            <a href="{{ route('kategori.show', $barang->Id_kategori) }}" type="button" class="btn btn-secondary">UPDATE</a>
+                                            <form action="{{ route('kategori.destroy', $barang->Id_kategori) }}" method="POST" onsubmit="return confirm('Delete?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger m-0">Delete</button>
+                                            </form>
+                                            
+                                        </div>
                                     </td>
                                 </tr>
-                            @endif 
-                        @endforeach --}}
-                    </table>
-                </div>
-                <div id="adminTable" class="recentOrders" style="display: none;">
-                    <div class="cardHeader">
-                        <h2>Table SecurityAdmin</h2>
-                        <a href="#" class="btn">View All</a>
+                            @endforeach
+                        </tbody>
+                    </table> --}}
+                    <div class="container">
+                        <span class="navbar-text text-black me-2">
+                            
+                        </span>
+                        <hr />
+                        <form action="kategori/insert" method="POST" enctype="">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" name="nama" class="form-control" placeholder="Nama Kategori">
+                                </div>
+                                
+                            </div>
+                
+                    
+                            <div class="row">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                
                     </div>
-                    <table border="1">
-                        <tr>
-                            <th>Id Admin</th>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                        {{-- @foreach ($users as $admin)
-                            @if ($admin['Role'] == 1)
-                                <tr>
-                                    <td>{{ $admin['Id_user'] }}</td>
-                                    <td>{{ $admin['Username'] }}</td>
-                                    <td>{{ $admin['name'] }}</td>
-                                    <td>{{ $admin['email'] }}</td>
-                                    <td>
-                                        <form action="/superadmin/demote" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $admin['Id_user'] }}">
-                                            <button type="submit" class="btn">Demote</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach --}}
-                    </table>
-                </div>
+                    
+                
+
             </div>
         </div>
     </div>
@@ -647,4 +631,43 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-0">Add Kategori</h1>
+        <span class="navbar-text text-black me-2">
+            
+        </span>
+        <hr />
+        <form action="kategori/insert" method="POST" enctype="">
+            @csrf
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" name="nama" class="form-control" placeholder="Nama Kategori">
+                </div>
+                
+            </div>
+
+    
+            <div class="row">
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    
+</body>
 </html>

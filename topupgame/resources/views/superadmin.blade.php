@@ -506,7 +506,23 @@
                     </a>
                 </li>               
                 <li>
-                    <a href="#">
+                    <a href="/crudkategori">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Kategori</span>
+                    </a>
+                </li>               
+                <li>
+                    <a href="/transaksi">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Transaksi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>

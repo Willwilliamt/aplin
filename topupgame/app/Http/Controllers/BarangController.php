@@ -13,6 +13,19 @@ class BarangController extends Controller
         $data->harga_barang = $request->harga;
         $data->id_kategori = $request->kategori;
         $data->id_user = $request->session()->get('user_id');
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/barang/', $filename);
+            $data->image = $filename;
+        }else{
+            return $request;
+            $data -> $image = '';
+        }
+
         
 
         $data->save();
@@ -23,7 +36,10 @@ class BarangController extends Controller
 
         $barangs = Barang::where('id_user', $user_id)->get();
 
-         return view('cruduser', compact('barangs'));
+        return view('cruduser', compact('barangs'));
+
+
+
     }
     public function show(string $id)
     {
@@ -37,6 +53,21 @@ class BarangController extends Controller
         $product->nama_barang = $request->input('nama');
         $product->harga_barang = $request->input('harga');
         $product->id_kategori = $request->input('kategori');
+
+        if ($request->hasFile('image')) {
+
+            $oldImage = public_path('uploads/barang/' . $product->image);
+            if (file_exists($oldImage)) {
+                @unlink($oldImage);
+            }
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/barang/', $filename);
+            $product->image = $filename;
+        }
+
         $product->save();
 
         return redirect('/cruduser');
@@ -44,6 +75,10 @@ class BarangController extends Controller
     public function destroy(string $id)
     {
         $product = Barang::findOrFail($id);
+        $imagePath = public_path('uploads/barang/' . $product->image);
+        if (file_exists($imagePath)) {
+            @unlink($imagePath);
+        }
         $product->delete();
         return redirect('/cruduser');
     }
