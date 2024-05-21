@@ -23,6 +23,7 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class, 'id_kategori', 'Id_kategori');
     }
+    
 
     public $timestamps = false;
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Barang;
 
 class KategoriController extends Controller
 {
@@ -35,6 +36,23 @@ class KategoriController extends Controller
         
         $product->save();
 
+        return redirect('/crudkategori');
+    }
+    public function destroy($id)
+    {
+        $category = Kategori::findOrFail($id);
+
+        $barangs = Barang::where('id_kategori', $id)->get();
+        foreach ($barangs as $barang) {
+
+            $imagePath = public_path('uploads/barang/' . $barang->image);
+            if (file_exists($imagePath)) {
+                @unlink($imagePath);
+            }
+            $barang->delete();
+        }
+
+        $category->delete();
         return redirect('/crudkategori');
     }
 }
