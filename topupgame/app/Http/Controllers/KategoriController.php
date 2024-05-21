@@ -8,7 +8,6 @@ use App\Models\Barang;
 
 class KategoriController extends Controller
 {
-    // Display a listing of the categories
     public function index(Request $request)
     {
         $categories = Kategori::all();
@@ -20,14 +19,10 @@ class KategoriController extends Controller
         $categories = Kategori::all();
         return view('home', compact('categories'));
     }
-
-    // Show the form for creating a new category
     public function create()
     {
         return view('kategori.create');
     }
-
-    // Store a newly created category in the database
     public function store(Request $request)
     {
         $request->validate([
@@ -38,8 +33,6 @@ class KategoriController extends Controller
 
         return redirect()->route('kategori.index')->with('success', 'Category created successfully.');
     }
-
-    // Insert a new category (from your first class)
     public function insert(Request $request)
     {
         $data = new Kategori;
@@ -48,14 +41,10 @@ class KategoriController extends Controller
 
         return redirect('/crudkategori');
     }
-
-    // Show the form for editing the specified category
     public function edit(Kategori $kategori)
     {
         return view('kategori.edit', compact('kategori'));
     }
-
-    // Show a specific category (from your first class)
     public function show($id)
     {
         $category = Kategori::find($id);
@@ -64,8 +53,6 @@ class KategoriController extends Controller
         }
         return view('updatekategori', compact('category'));
     }
-
-    // Update the specified category in the database
     public function update(Request $request, Kategori $kategori)
     {
         $request->validate([
@@ -77,7 +64,6 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with('success', 'Category updated successfully.');
     }
 
-    // Update a specific category (from your first class)
     public function updateCategory(Request $request, string $id)
     {
         $product = Kategori::findOrFail($id);
@@ -87,7 +73,6 @@ class KategoriController extends Controller
         return redirect('/crudkategori');
     }
 
-    // Remove the specified category from the database
     public function destroy(Kategori $kategori)
     {
         $kategori->delete();
@@ -95,7 +80,6 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with('success', 'Category deleted successfully.');
     }
 
-    // Remove a specific category and its related items (from your first class)
     public function destroyCategory($id)
     {
         $category = Kategori::findOrFail($id);

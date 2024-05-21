@@ -218,60 +218,79 @@
         </div>
   </div>
 
-    <div class="cardBag p-5" id="category">
-        <h1 class="text-center">Vouchers & Games</h1>
-<div class="d-flex justify-content-center p-3">
-    <button class="btn btn-primary me-2" id="allBtn">All</button>
-    @foreach($categories as $category)
-        <button class="btn btn-primary me-2" id="{{ $category->nama_kategori }}Btn">{{ $category->nama_kategori }}</button>
-    @endforeach
-</div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3" id="ML">
-                    <div class="card h-100">
-                        <img src="mlbb.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Mobile Legends</h5>
-                            <p class="card-text">Mobile Legends: Bang Bang is a popular MOBA game where players can top up diamonds to purchase hero skins. These skins change the hero's appearance and provide special effects, enhancing the gaming experience.</p>
-                            <button class="btn btn-primary">See More</button>
-                        </div>
+  <div class="cardBag p-5" id="category">
+    <h1 class="text-center">Vouchers & Games</h1>
+    <div class="d-flex justify-content-center p-3">
+        <button class="btn btn-primary me-2" id="allBtn">All</button>
+        @foreach($categories as $category)
+            <button class="btn btn-primary me-2" id="{{ strtoupper($category->nama_kategori) }}Btn">{{ $category->nama_kategori }}</button>
+        @endforeach
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3" id="MOBILE">
+                <div class="card h-100">
+                    <img src="mlbb.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile Legends</h5>
+                        <p class="card-text">Mobile Legends: Bang Bang is a popular MOBA game where players can top up diamonds to purchase hero skins. These skins change the hero's appearance and provide special effects, enhancing the gaming experience.</p>
+                        <button class="btn btn-primary">See More</button>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3" id="PUBG">
-                    <div class="card h-100">
-                        <img src="pubg.jpg" class="card-img-top" alt="..." height="245px">
-                        <div class="card-body">
-                            <h5 class="card-title">PUBG Mobile</h5>
-                            <p class="card-text">PUBG is a widely-played battle royale game where players can purchase Unknown Cash (UC) to buy skins and outfits. These cosmetic items change the appearance of characters and gear, offering a personalized gaming experience.</p>
-                            <button class="btn btn-primary">See More</button>
-                        </div>
+            </div>
+            <div class="col-md-4 mb-3" id="MOBILE">
+                <div class="card h-100">
+                    <img src="pubg.jpg" class="card-img-top" alt="..." height="245px">
+                    <div class="card-body">
+                        <h5 class="card-title">PUBG Mobile</h5>
+                        <p class="card-text">PUBG is a widely-played battle royale game where players can purchase Unknown Cash (UC) to buy skins and outfits. These cosmetic items change the appearance of characters and gear, offering a personalized gaming experience.</p>
+                        <button class="btn btn-primary">See More</button>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3" id="VALORANT">
-                    <div class="card h-100">
-                        <img src="valorant.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Valorant</h5>
-                            <p class="card-text">Valorant is a popular tactical shooter where players can top up Valorant Points (VP) to buy weapon skins. These skins alter the appearance of weapons and add visual flair, making gameplay more engaging.</p>
-                            <button class="btn btn-primary">See More</button>
-                        </div>
+            </div>
+            <div class="col-md-4 mb-3" id="PC">
+                <div class="card h-100">
+                    <img src="valorant.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Valorant</h5>
+                        <p class="card-text">Valorant is a popular tactical shooter where players can top up Valorant Points (VP) to buy weapon skins. These skins alter the appearance of weapons and add visual flair, making gameplay more engaging.</p>
+                        <button class="btn btn-primary">See More</button>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3" id="GENSHIN">
-                    <div class="card h-100">
-                        <img src="genshin.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Genshin Impact</h5>
-                            <p class="card-text">Genshin Impact is an open-world action RPG where players can top up Genesis Crystals to buy skins and other in-game items. Skins provide characters with new looks and enhance the visual appeal of the game.</p>
-                            <button class="btn btn-primary">See More</button>
-                        </div>
+            </div>
+            <div class="col-md-4 mb-3" id="PC">
+                <div class="card h-100">
+                    <img src="genshin.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Genshin Impact</h5>
+                        <p class="card-text">Genshin Impact is an open-world action RPG where players can top up Genesis Crystals to buy skins and other in-game items. Skins provide characters with new looks and enhance the visual appeal of the game.</p>
+                        <button class="btn btn-primary">See More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3" id="STREAMING">
+                <div class="card h-100">
+                    <img src="netflix.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">NETFLIX</h5>
+                        <p class="card-text">Netflix is an American subscription video on-demand over-the-top streaming service. The service primarily distributes original and acquired films and television shows from various genres, and it is available internationally in multiple languages.</p>
+                        <button class="btn btn-primary">See More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3" id="VOUCHER">
+                <div class="card h-100">
+                    <img src="steam.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">STEAM</h5>
+                        <p class="card-text">Steam is a video game digital distribution service and storefront developed by Valve Corporation. It was launched as a software client in September 2003 to provide game updates automatically for Valve's games, and expanded to distributing third-party titles in late 2005.</p>
+                        <button class="btn btn-primary">See More</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  
+</div>
     <footer class="site-footer">
       <div class="container">
         <div class="row mb-5">
@@ -320,6 +339,37 @@
       </div>
     </footer>
     
+    <script>
+   document.addEventListener("DOMContentLoaded", function() {
+  var categoryButtons = document.querySelectorAll("#category button");
+  var allButton = document.getElementById("allBtn");
+  categoryButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var categoryId = this.id.replace("Btn", "").toUpperCase();
+      var cards = document.querySelectorAll("#category .col-md-4");
+      cards.forEach(function(card) {
+        card.style.display = "none";
+      });
+      if (categoryId === "ALL") {
+        cards.forEach(function(card) {
+          card.style.display = "block";
+        });
+      } else {
+        var selectedCards = document.querySelectorAll("#category .col-md-4#" + categoryId);
+        selectedCards.forEach(function(card) {
+          card.style.display = "block";
+        });
+      }
+    });
+  });
+  allButton.addEventListener("click", function() {
+    var cards = document.querySelectorAll("#category .col-md-4");
+    cards.forEach(function(card) {
+      card.style.display = "block";
+    });
+  });
+});
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
