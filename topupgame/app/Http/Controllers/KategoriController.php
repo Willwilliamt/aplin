@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Barang;
+use App\Models\Game;
 
 class KategoriController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request);
+        
         $categories = Kategori::all();
         return view('crudkategori', compact('categories'));
     }
@@ -18,7 +19,8 @@ class KategoriController extends Controller
     public function home()
     {
         $categories = Kategori::all();
-        return view('home', compact('categories'));
+        $game = Game::all();
+        return view('home', ['categories' => $categories,'game' => $game]);
     }
     public function create()
     {

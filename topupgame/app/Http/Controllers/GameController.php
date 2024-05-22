@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Kategori;
+use App\Models\Game;
 class GameController extends Controller
 {
-    function kategori(){
-        $data = Kategori::all();
+    public function kategori(Request $request) {
+        
+        
+        $categories = Kategori::all();
+
+         return view('addgame', compact('categories'));
+    }
+    public function index(Request $request){
+        $data = Game::all();
+        return view('securityadmin', compact('data'));
     }
     function insert(Request $request) {
         $data = new Game;
         $data->name = $request->name;
         $data->description = $request->desc;
-        $data->id_kategori = $request->kategori;
+        $data->nama_kategori = $request->kategori;
 
         if($request->hasfile('image'))
         {

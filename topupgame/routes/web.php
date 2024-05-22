@@ -5,6 +5,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +24,9 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
-Route::get('/addgame', [GameController::class, 'index2']);
+Route::get('/addgame', [GameController::class, 'kategori']);
 Route::get('/addbarang', [BarangController::class, 'add']);
-Route::get('/securityadmin', function () {
-    return view('securityadmin');
-});
-
-Route::get('/crudkategori', function () {
-    return view('crudkategori');
-});
+Route::get('/securityadmin', [GameController::class, 'index']);
 
 Route::get('/addkategori', function () {
     return view('addkategori');
@@ -39,9 +34,7 @@ Route::get('/addkategori', function () {
 Route::get('/superadmin', function () {
     return view('superadmin');
 });
-Route::get('/addgame', function () {
-    return view('addgame');
-});
+
 
 Route::prefix('superadmin')->group(function () {
     Route::get('/', [PenggunaController::class, 'index']);

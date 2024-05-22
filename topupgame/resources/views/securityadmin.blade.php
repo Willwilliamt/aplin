@@ -545,23 +545,20 @@
                     </div>
                     <table>
                         <tr>
-                            <th>Id User</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Action</th>
+                            <th>Id</th>
+                            <th>Nama Game</th>
+                            <th>Description</th>
+                            <th>Nama Kategori</th>
+                            <th>Image</th>
+                            
                         </tr>
-                        {{-- @foreach ($users as $item)
-                            @if ($item['Role'] == 0)
+                        @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $item['Id_user'] }}</td>
-                                    <td>{{ $item['Username'] }}</td>
-                                    <td>{{ $item['Password'] }}</td>
+                                    <td>{{ $item['id_game'] }}</td>
                                     <td>{{ $item['name'] }}</td>
-                                    <td>{{ $item['phone'] }}</td>
-                                    <td>{{ $item['email'] }}</td>
+                                    <td>{{ $item['description'] }}</td>
+                                    <td>{{ $item['nama_kategori'] }}</td>
+                                    <td><img src="{{ asset('uploads/game/' . $item->image) }}" alt="..."></td>
                                     <td>
                                         <form action="/superadmin/promote" method="post">
                                             @csrf
@@ -570,8 +567,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endif 
-                        @endforeach --}}
+                        @endforeach
                     </table>
                 </div>                
             </div>

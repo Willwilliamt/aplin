@@ -227,7 +227,20 @@
         @endforeach
     </div>
     <div class="container">
-        <div class="row">
+      <div class="row">
+      @foreach ($game as $barang)
+      <div class="col-md-4 mb-3" id="{{$barang['nama_kategori']}}">
+        <div class="card h-100">
+            <img src="{{ asset('uploads/game/' . $barang->image) }}" style="width: 355px; height:200px;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{$barang['name']}}</h5>
+                <p class="card-text">{{$barang['description']}}</p>
+                <button class="btn btn-primary">See More</button>
+            </div>
+        </div>
+    </div>
+      @endforeach
+        
             <div class="col-md-4 mb-3" id="MOBILE">
                 <div class="card h-100">
                     <img src="mlbb.jpeg" class="card-img-top" alt="...">
