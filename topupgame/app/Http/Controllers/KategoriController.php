@@ -10,6 +10,7 @@ class KategoriController extends Controller
 {
     public function index(Request $request)
     {
+        dd($request);
         $categories = Kategori::all();
         return view('crudkategori', compact('categories'));
     }

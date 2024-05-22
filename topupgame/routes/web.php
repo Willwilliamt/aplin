@@ -23,7 +23,7 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
-Route::get('/addgame', [GameController::class, 'add']);
+Route::get('/addgame', [GameController::class, 'index2']);
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', function () {
     return view('securityadmin');
