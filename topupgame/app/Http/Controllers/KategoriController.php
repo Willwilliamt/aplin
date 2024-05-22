@@ -11,7 +11,7 @@ class KategoriController extends Controller
     public function index(Request $request)
     {
         $categories = Kategori::all();
-        return view('kategori.index', compact('categories'));
+        return view('crudkategori', compact('categories'));
     }
 
     public function home()
@@ -31,19 +31,14 @@ class KategoriController extends Controller
 
         Kategori::create($request->all());
 
-        return redirect()->route('kategori.index')->with('success', 'Category created successfully.');
+        return redirect()->route('/addkategori')->with('success', 'Category created successfully.');
     }
-    public function insert(Request $request)
-    {
+    public function insert(Request $request) {
         $data = new Kategori;
         $data->nama_kategori = $request->nama;
-        $data->save();
 
+        $data->save();
         return redirect('/crudkategori');
-    }
-    public function edit(Kategori $kategori)
-    {
-        return view('kategori.edit', compact('kategori'));
     }
     public function show($id)
     {
@@ -55,13 +50,12 @@ class KategoriController extends Controller
     }
     public function update(Request $request, Kategori $kategori)
     {
-        $request->validate([
-            'nama_kategori' => 'required|unique:kategori|max:255',
-        ]);
+        $product = Kategori::findOrFail($id);
+        $product->nama_kategori = $request->input('nama');
+        
+        $product->save();
 
-        $kategori->update($request->all());
-
-        return redirect()->route('kategori.index')->with('success', 'Category updated successfully.');
+        return redirect('/crudkategori');
     }
 
     public function updateCategory(Request $request, string $id)

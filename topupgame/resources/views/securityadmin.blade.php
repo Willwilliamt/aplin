@@ -506,7 +506,7 @@
                     </a>
                 </li>               
                 <li>
-                    <a href="/crudkategori">
+                    <a href="/addgame">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -540,7 +540,7 @@
             <div class="details">
                 <div id="userTable" class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Table User</h2>
+                        <h2>Table GAME</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table>
@@ -573,39 +573,7 @@
                             @endif 
                         @endforeach --}}
                     </table>
-                </div>
-                <div id="adminTable" class="recentOrders" style="display: none;">
-                    <div class="cardHeader">
-                        <h2>Table SecurityAdmin</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table border="1">
-                        <tr>
-                            <th>Id Admin</th>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                        {{-- @foreach ($users as $admin)
-                            @if ($admin['Role'] == 1)
-                                <tr>
-                                    <td>{{ $admin['Id_user'] }}</td>
-                                    <td>{{ $admin['Username'] }}</td>
-                                    <td>{{ $admin['name'] }}</td>
-                                    <td>{{ $admin['email'] }}</td>
-                                    <td>
-                                        <form action="/superadmin/demote" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $admin['Id_user'] }}">
-                                            <button type="submit" class="btn">Demote</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach --}}
-                    </table>
-                </div>
+                </div>                
             </div>
         </div>
     </div>

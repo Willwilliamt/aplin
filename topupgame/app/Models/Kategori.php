@@ -20,6 +20,10 @@ class Kategori extends Model
     {
         return $this->hasMany(Barang::class, 'id_kategori', 'Id_kategori');
     }
+    public function games()
+    {
+        return $this->hasMany(Game::class, 'id_kategori', 'Id_kategori');
+    }
 
     public $timestamps = false;
 }

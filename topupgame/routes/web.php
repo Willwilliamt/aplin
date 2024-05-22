@@ -23,17 +23,26 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
-
+Route::get('/addgame', [GameController::class, 'add']);
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', function () {
     return view('securityadmin');
 });
+
+Route::get('/crudkategori', function () {
+    return view('crudkategori');
+});
+
 Route::get('/addkategori', function () {
     return view('addkategori');
 });
 Route::get('/superadmin', function () {
     return view('superadmin');
 });
+Route::get('/addgame', function () {
+    return view('addgame');
+});
+
 Route::prefix('superadmin')->group(function () {
     Route::get('/', [PenggunaController::class, 'index']);
     Route::post('/promote', [PenggunaController::class, 'promote']);
@@ -49,6 +58,9 @@ Route::prefix('pengguna')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::post('/insert', [BarangController::class, 'insert']);
+});
+Route::prefix('game')->group(function () {
+    Route::post('/insert', [GameController::class, 'insert']);
 });
 
 Route::prefix('kategori')->group(function () {
