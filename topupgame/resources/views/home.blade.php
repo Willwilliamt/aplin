@@ -149,7 +149,7 @@
                 <a class="nav-link fs-5 text-white" href="#category">Games</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-5 text-white" href="#about">About Us</a>
+                <a class="nav-link fs-5 text-white" href="#aboutus">About Us</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="#contact">Contact</a>
@@ -344,7 +344,7 @@
         </div>
     </div>
 </div>
-    <footer class="site-footer">
+    <footer class="site-footer" id="aboutus">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-3 mb-5">
@@ -353,7 +353,7 @@
             <p><a href="">Click here to learn more</a></p>
           </div>
 
-          <div class="col-md-3 mb-5">
+          <div class="col-md-3 mb-5" id="contact">
             <h2>Contact &amp; Address</h2>
             <ul class="list-unstyled footer-link">
               <li class="d-flex">
