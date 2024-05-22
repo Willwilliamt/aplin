@@ -239,6 +239,46 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3" id="MOBILE">
+              <div class="card h-100">
+                  <img src="ea.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">EA SPORTS FC MOBILE</h5>
+                      <p class="card-text">EA Sports FC Mobile is an association football simulation video game developed by EA Mobile and EA Canada and published by EA Sports for global version, Tencent Games for Chinese version and Nexon for Japanese and Korean version for iOS and Android. </p>
+                      <button class="btn btn-primary">See More</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3" id="MOBILE">
+              <div class="card h-100">
+                  <img src="coc.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">CLASH OF CLANS</h5>
+                      <p class="card-text">Clash of Clans is a 2012 free-to-play mobile strategy video game developed and published by Finnish game developer Supercell. The game was released for iOS platforms on August 2, 2012, and on Google Play for Android on October 7, 2013. </p>
+                      <button class="btn btn-primary">See More</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3" id="MOBILE">
+              <div class="card h-100">
+                  <img src="brawl.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Brawl Stars</h5>
+                      <p class="card-text">Brawl Stars is a multiplayer online battle arena and third-person hero shooter video game developed and published by the Finnish video game company Supercell. The game was released worldwide on December 12, 2018, on iOS and Android platforms. </p>
+                      <button class="btn btn-primary">See More</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3" id="MOBILE">
+              <div class="card h-100">
+                  <img src="cod.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Call of Duty Mobile</h5>
+                      <p class="card-text">Call of Duty: Mobile is a 2019 first-person shooter video game developed by TiMi Studio Group and published by Activision for Android and iOS. Released as a free-to-play title, it was one of the largest mobile game launches in history, generating over US$480 million with 270 million downloads within a year. </p>
+                      <button class="btn btn-primary">See More</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3" id="MOBILE">
                 <div class="card h-100">
                     <img src="pubg.jpg" class="card-img-top" alt="..." height="245px">
                     <div class="card-body">
