@@ -21,7 +21,7 @@
     }
 </style>
 <body>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container w-50 p-5 box">
             <h1 class="text-center">Welcome</h1> 
             <form action="game/insert" method="POST" enctype="multipart/form-data">
