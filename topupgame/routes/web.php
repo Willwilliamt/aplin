@@ -6,6 +6,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\PromoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,22 @@ Route::get('/login', function () {
 });
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
+
+Route::get('/crudpromo', [PromoController::class, 'index']);
+
 Route::get('/addgame', [GameController::class, 'kategori']);
+
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
 
 Route::get('/addkategori', function () {
     return view('addkategori');
 });
+
+Route::get('/addpromo', function () {
+    return view('addpromo');
+});
+
 Route::get('/superadmin', function () {
     return view('superadmin');
 });
@@ -63,6 +73,7 @@ Route::prefix('kategori')->group(function () {
     Route::delete('destroy/{id}', [KategoriController::class, 'destroyCategory'])->name('kategori.destroy');
 });
 
+
 Route::controller(BarangController::class)->prefix('products')->group(function () {
     Route::get('show/{id}', 'show')->name('products.show');  
     Route::put('edit/{id}', 'update')->name('products.update');
@@ -71,3 +82,12 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
 
 Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
+
+
+
+Route::prefix('promo')->group(function () {
+    Route::post('/insert', [PromoController::class, 'insert']);
+    Route::get('show/{id}', [PromoController::class, 'show'])->name('promo.show');
+    Route::put('edit/{id}', [PromoController::class, 'update'])->name('promo.update');
+    Route::delete('destroy/{id}', [PromoController::class, 'destroy'])->name('promo.destroy');
+});
