@@ -532,7 +532,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/promo">
+                    <a href="/crudinfluencer">
                         <span class="icon">
                             <ion-icon name="menu-outline"></ion-icon>
                         </span>

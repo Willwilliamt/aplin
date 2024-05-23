@@ -552,9 +552,9 @@
         <div class="main">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="mb-0 text-white">List Kategori</h1>
+                    <h1 class="mb-0 text-white">List Influencer</h1>
                     
-                    <a href="/addkategori" class="btn btn-primary">Add Kategori</a>
+                    <a href="/addinfluencer" class="btn btn-primary">Add Influencer</a>
                 </div>
                     <hr />
                     <table class="table table text-white" >
@@ -562,21 +562,25 @@
                             <tr>
                                 
                                 <th>ID</th>
-                                <th>Nama Kategori</th>
+                                <th>Nama Influencer</th>
+                                <th>Platform</th>
+                      
                                 <th>Action</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $barang)
+                            @foreach ($promos as $barang)
                                 <tr>
                                     
-                                    <td class="align-middle">{{ $barang->Id_kategori }}</td>
-                                    <td class="align-middle">{{ $barang->nama_kategori }}</td>
+                                    <td class="align-middle">{{ $barang->Id_influencer }}</td>
+                                    <td class="align-middle">{{ $barang->Nama_influencer }}</td>
+                                    <td class="align-middle">{{ $barang->platform }}</td>
+                                    
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic Example">
-                                            <a href="{{ route('kategori.show', $barang->Id_kategori) }}" type="button" class="btn btn-secondary">UPDATE</a>
-                                            <form action="{{ route('kategori.destroy', $barang->Id_kategori) }}" method="POST" onsubmit="return confirm('Delete?')">
+                                            <a href="{{ route('influencer.show', $barang->Id_influencer) }}" type="button" class="btn btn-secondary">UPDATE</a>
+                                            <form action="{{ route('influencer.destroy', $barang->Id_influencer) }}" method="POST" onsubmit="return confirm('Delete?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger m-0">Delete</button>

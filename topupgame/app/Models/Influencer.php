@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Influencer extends Model
 {
-    use HasFactory;
+     // use HasFactory;
+     protected $table = 'Influencer';
+
+     protected $primaryKey = 'Id_influencer';
+ 
+     protected $fillable = [
+         'Nama_influencer',
+         'platform',
+
+     ];
+ 
+     
+ 
+    public $timestamps = false;
 }

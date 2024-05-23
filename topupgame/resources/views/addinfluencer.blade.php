@@ -510,35 +510,11 @@
                 <li>
                     <a href="/crudkategori">
                         <span class="icon">
-                            <ion-icon name="menu-outline"></ion-icon>
+                            <ion-icon name="home-outline"></ion-icon>
                         </span>
                         <span class="title">Kategori</span>
                     </a>
                 </li>               
-                <li>
-                    <a href="/transaksi">
-                        <span class="icon">
-                            <ion-icon name="menu-outline"></ion-icon>
-                        </span>
-                        <span class="title">Transaksi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/crudpromo">
-                        <span class="icon">
-                            <ion-icon name="menu-outline"></ion-icon>
-                        </span>
-                        <span class="title">Promo</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/crudinfluencer">
-                        <span class="icon">
-                            <ion-icon name="menu-outline"></ion-icon>
-                        </span>
-                        <span class="title">Influencer</span>
-                    </a>
-                </li>
                 <li>
                     <a href="/logout">
                         <span class="icon">
@@ -552,43 +528,36 @@
         <div class="main">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="mb-0 text-white">List Kategori</h1>
+                    <h1 class="mb-0 text-white">Add Influencer</h1>
                     
-                    <a href="/addkategori" class="btn btn-primary">Add Kategori</a>
+                    <a href="/crudpromo" class="btn btn-primary">List Influencer</a>
                 </div>
                     <hr />
-                    <table class="table table text-white" >
-                        <thead class="table-primary">
-                            <tr>
-                                
-                                <th>ID</th>
-                                <th>Nama Kategori</th>
-                                <th>Action</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $barang)
-                                <tr>
+                    <div class="container">
+                        <span class="navbar-text text-black me-2">
+                            
+                        </span>
+                        <hr />
+                        <form action="influencer/insert" method="POST" enctype="">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" name="nama" class="form-control" placeholder="Nama Influencer"><br>
+                                    <input type="text" name="platform" class="form-control" placeholder="Platform"><br>
                                     
-                                    <td class="align-middle">{{ $barang->Id_kategori }}</td>
-                                    <td class="align-middle">{{ $barang->nama_kategori }}</td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic Example">
-                                            <a href="{{ route('kategori.show', $barang->Id_kategori) }}" type="button" class="btn btn-secondary">UPDATE</a>
-                                            <form action="{{ route('kategori.destroy', $barang->Id_kategori) }}" method="POST" onsubmit="return confirm('Delete?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger m-0">Delete</button>
-                                            </form>
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-            
+                                </div>
+                                
+                            </div>
+                
+                    
+                            <div class="row">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                
+                    </div>
                     
                 
 
