@@ -229,17 +229,18 @@
     <div class="container">
       <div class="row">
       @foreach ($game as $barang)
-      <div class="col-md-4 mb-3" id="{{$barang['nama_kategori']}}">
-        <div class="card h-100">
-            <img src="{{ asset('uploads/game/' . $barang->image) }}" style="width: 355px; height:200px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{$barang['name']}}</h5>
-                <p class="card-text">{{$barang['description']}}</p>
-                <button class="btn btn-primary">See More</button>
-            </div>
-        </div>
-    </div>
-      @endforeach
+<div class="col-md-4 mb-3" id="{{$barang['nama_kategori']}}">
+  <div class="card h-100">
+      <img src="{{ asset('uploads/game/' . $barang->image) }}" style="width: 355px; height:200px;" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">{{$barang['name']}}</h5>
+          <p class="card-text">{{$barang['description']}}</p>
+          <a href="{{ url('/quickbuy', ['id' => $barang->id]) }}" class="btn btn-primary">Quick Buy</a>
+      </div>
+  </div>
+</div>
+@endforeach
+
         
             <div class="col-md-4 mb-3" id="MOBILE">
                 <div class="card h-100">

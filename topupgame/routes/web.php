@@ -24,6 +24,8 @@ Route::get('/', [KategoriController::class, 'home'])->name('home');
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/quickbuy/{id}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
+
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
 
