@@ -107,3 +107,9 @@ Route::prefix('influencer')->group(function () {
     Route::put('edit/{id}', [InfluencerController::class, 'update'])->name('influencer.update');
     Route::delete('destroy/{id}', [InfluencerController::class, 'destroy'])->name('influencer.destroy');
 });
+
+Route::controller(GameController::class)->prefix('games')->group(function () {
+    Route::get('show/{id}', 'show')->name('games.show');  
+    Route::put('edit/{id}', 'update')->name('games.update');
+
+});

@@ -44,8 +44,9 @@ class BarangController extends Controller
     public function show(string $id)
     {
         $product = Barang::findOrFail($id);
+        $categories = Kategori::all();
   
-        return view('show', compact('product'));
+        return view('show', compact('product', 'categories'));
     }
 
     public function update(Request $request, string $id) {

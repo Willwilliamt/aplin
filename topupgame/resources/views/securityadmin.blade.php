@@ -558,19 +558,17 @@
                                     <td>{{ $item['name'] }}</td>
                                     <td>{{ $item['description'] }}</td>
                                     <td>{{ $item['nama_kategori'] }}</td>
-                                    <td><img src="{{ asset('uploads/game/' . $item->image) }}" alt="..."></td>
+                                    <td><img src="{{ asset('uploads/game/' . $item->image) }}" alt="..." width="100px" height="100px"></td>
                                     <td>
-                                        <form action="/securityadmin/update" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">
-                                            {{-- jek gaiso --}}
-                                            {{-- <a href="{{ route('game.updategame', $item->id_game) }}" type="button" class="btn btn-secondary">Update</a> --}}
-                                        </form>
-                                        <form action="/securityadmin/delete" method="post">  
-                                            @csrf    
-                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">                                      
-                                            <button type="submit" class="btn">Delete</button>
-                                        </form>
+                                        <div style="display: flex">
+
+                                            <a href="{{ route('games.show', $item->id_game) }}" type="button" class="btn btn-secondary">UPDATE</a>
+                                            <form action="/securityadmin/delete" method="post">  
+                                                @csrf    
+                                                <input type="hidden" name="id" value="{{ $item['id_game'] }}">                                      
+                                                <button type="submit" class="btn">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                         @endforeach
