@@ -38,4 +38,11 @@ class GameController extends Controller
         $data->save();
         return redirect('/securityadmin');
     }
+
+    function delete(Request $request) {
+        $id = $request->id;
+        $data = Game::find($id);
+        $data->delete();
+        return redirect('securityadmin');
+    }
 }
