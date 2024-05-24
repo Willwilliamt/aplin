@@ -71,3 +71,8 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
 
 Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
+
+Route::prefix('securityadmin')->group(function () {
+    Route::post('/delete', [GameController::class, 'delete']);
+});
+

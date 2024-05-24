@@ -560,10 +560,16 @@
                                     <td>{{ $item['nama_kategori'] }}</td>
                                     <td><img src="{{ asset('uploads/game/' . $item->image) }}" alt="..."></td>
                                     <td>
-                                        <form action="/superadmin/promote" method="post">
+                                        <form action="/securityadmin/update" method="post">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{ $item['Id_user'] }}">
-                                            <button type="submit" class="btn">Promote</button>
+                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">
+                                            {{-- jek gaiso --}}
+                                            {{-- <a href="{{ route('game.updategame', $item->id_game) }}" type="button" class="btn btn-secondary">Update</a> --}}
+                                        </form>
+                                        <form action="/securityadmin/delete" method="post">  
+                                            @csrf    
+                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">                                      
+                                            <button type="submit" class="btn">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
