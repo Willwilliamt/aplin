@@ -227,22 +227,20 @@
             @endforeach
         </div>
         <div class="row">
-            @foreach($games as $game)
-                <div class="col-md-4 mb-3 game-card" data-category="{{ $game->nama_kategori }}">
-                    <div class="card h-100">
-                        <img src="{{ asset('uploads/game/' . $game->image) }}" class="card-img-top" alt="..." style="height:200px;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $game->name }}</h5>
-                            <p class="card-text">{{ $game->description }}</p>
-                            <a href="{{ route('show.quick.buy', $game->id) }}" class="btn btn-primary">Quick Buy</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+        @foreach ($game as $g)
+    <div class="col-md-4 mb-3" id="{{ $g->nama_kategori }}">
+        <div class="card h-100">
+            <img src="{{ asset('uploads/game/' . $g->image) }}" style="width: 355px; height:200px;" class="card-img-top" alt="{{ $g->name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ $g->name }}</h5>
+                <p class="card-text">{{ $g->description }}</p>
+                <a href="{{ route('quickbuy', $g->id_game) }}" class="btn btn-primary">Quick Buy</a>
+            </div>
         </div>
-        </div>
+    </div>
+@endforeach
 
-
+        
         
             <div class="col-md-4 mb-3" id="MOBILE">
                 <div class="card h-100">
@@ -344,6 +342,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

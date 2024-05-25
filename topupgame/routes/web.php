@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\InfluencerController;
+use App\Http\Controllers\QuickBuyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,9 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/home', [GameController::class, 'home'])->name('games');
-Route::get('/quickbuy/{id}', 'QuickBuyController@quickbuy');
-Route::get('/quickbuy/{id}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
-Route::get('show-quick-buy/{id}', 'GameController@showQuickBuyForm')->name('show.quick.buy');
+Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
+Route::get('show-quick-buy/{id}', [GameController::class, 'showQuickBuyForm'])->name('show_quick_buy');
+
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
 
