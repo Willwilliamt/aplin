@@ -219,27 +219,29 @@
   </div>
 
   <div class="cardBag p-5" id="category">
-    <h1 class="text-center">Vouchers & Games</h1>
-    <div class="d-flex justify-content-center p-3">
-        <button class="btn btn-primary me-2" id="allBtn">All</button>
-        @foreach($categories as $category)
-            <button class="btn btn-primary me-2" id="{{ strtoupper($category->nama_kategori) }}Btn">{{ $category->nama_kategori }}</button>
-        @endforeach
-    </div>
-    <div class="container">
-      <div class="row">
-      @foreach ($game as $barang)
-<div class="col-md-4 mb-3" id="{{$barang['nama_kategori']}}">
-  <div class="card h-100">
-      <img src="{{ asset('uploads/game/' . $barang->image) }}" style="width: 355px; height:200px;" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">{{$barang['name']}}</h5>
-          <p class="card-text">{{$barang['description']}}</p>
-          <a href="{{ url('/quickbuy', ['id' => $barang->id]) }}" class="btn btn-primary">Quick Buy</a>
-      </div>
-  </div>
-</div>
-@endforeach
+  <h1 class="text-center">Vouchers & Games</h1>
+        <div class="d-flex justify-content-center p-3">
+            <button class="btn btn-primary me-2" id="allBtn">All</button>
+            @foreach($categories as $category)
+                <button class="btn btn-primary me-2" id="{{ strtoupper($category->nama_kategori) }}Btn">{{ $category->nama_kategori }}</button>
+            @endforeach
+        </div>
+        <div class="row">
+            @foreach($games as $game)
+                <div class="col-md-4 mb-3 game-card" data-category="{{ $game->nama_kategori }}">
+                    <div class="card h-100">
+                        <img src="{{ asset('uploads/game/' . $game->image) }}" class="card-img-top" alt="..." style="height:200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $game->name }}</h5>
+                            <p class="card-text">{{ $game->description }}</p>
+                            <a href="{{ route('show.quick.buy', $game->id) }}" class="btn btn-primary">Quick Buy</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        </div>
+
 
         
             <div class="col-md-4 mb-3" id="MOBILE">

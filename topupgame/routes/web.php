@@ -20,12 +20,14 @@ use App\Http\Controllers\InfluencerController;
 |
 */
 
-Route::get('/', [KategoriController::class, 'home'])->name('home');
+Route::get('/', [KategoriController::class, 'home'])->name('homepage');
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/home', [GameController::class, 'home'])->name('games');
+Route::get('/quickbuy/{id}', 'QuickBuyController@quickbuy');
 Route::get('/quickbuy/{id}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
-
+Route::get('show-quick-buy/{id}', 'GameController@showQuickBuyForm')->name('show.quick.buy');
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
 

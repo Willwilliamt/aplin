@@ -10,13 +10,13 @@
     <div class="container mt-5">
         <h1>Quick Buy - {{ $game->name }}</h1>
         <div class="card mb-3">
-            <img src="{{ asset('uploads/game/' . $game->image) }}" class="card-img-top" alt="{{ $game->name }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ $game->name }}</h5>
-                <p class="card-text">{{ $game->description }}</p>
-                <a href="{{ url('/purchase', ['id' => $game->id]) }}" class="btn btn-success">Purchase</a>
-            </div>
-        </div>
+    <img src="{{ asset('uploads/game/' . $game->image) }}" class="card-img-top" alt="{{ $game->name }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ $game->name }}</h5>
+        <p class="card-text">{{ $game->description }}</p>
+        <a href="{{ url('/purchase', ['id' => $game->id]) }}" class="btn btn-success">Purchase</a>
+    </div>
+</div>
     </div>
 </body>
 </html>
