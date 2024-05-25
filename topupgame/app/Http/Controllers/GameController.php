@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Game;
+use App\Models\Barang;
 
 class GameController extends Controller
 {
@@ -18,12 +19,11 @@ class GameController extends Controller
         return view('securityadmin', compact('games'));
     }
     
-    public function home()
-{
-    $games = Game::all();
-    $categories = Kategori::all();
-    return view('home', ['games' => $games, 'categories' => $categories]);
-}
+    public function home() {
+        $games = Game::all();
+        $categories = Kategori::all();
+        return view('home', ['games' => $games, 'categories' => $categories]);
+    }
 
     public function insert(Request $request) {
         $data = new Game;
@@ -42,8 +42,13 @@ class GameController extends Controller
         return redirect('/securityadmin');
     }
 
-    public function showQuickBuyForm(Game $game) {
-        return view('quickbuy', compact('game'));
+    public function showQuickBuyForm($id_game) {
+        $game = Game::find($id_game);
+        if (!$game) {
+            return redirect()->route('home')->with('error', 'Game not found');
+        }
+        $barang = Barang::all(); 
+        return view('quickbuy', compact('game', 'barang'));
     }
 
     public function delete(Request $request) {
