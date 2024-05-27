@@ -530,6 +530,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/addproduk">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add Product</span>
+                    </a>
+                </li>   
+                <li>
                     <a href="/promo">
                         <span class="icon">
                             <ion-icon name="menu-outline"></ion-icon>

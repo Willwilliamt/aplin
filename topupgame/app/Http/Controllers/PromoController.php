@@ -10,7 +10,6 @@ class PromoController extends Controller
 {
     public function index(Request $request)
     {
-        
         $promos = Promo::all();
         return view('crudpromo', compact('promos'));
     }

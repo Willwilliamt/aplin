@@ -42,6 +42,14 @@ class GameController extends Controller
         return redirect('/securityadmin');
     }
 
+    public function showQuickBuyForm($id_game) {
+        $game = Game::find($id_game);
+        if (!$game) {
+            return redirect()->route('home')->with('error', 'Game not found');
+        }
+        $barang = Barang::all(); 
+        return view('quickbuy', compact('game', 'barang'));
+    }
 
     public function delete(Request $request) {
         $id = $request->id;

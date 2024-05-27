@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <style>
                 
@@ -32,7 +34,7 @@
         background: linear-gradient(to bottom, #0f0c29,#302b63,#24243e);
         }
 
-        .container {
+        .containers {
         position: relative;
         width: 100%;
         }
@@ -484,7 +486,7 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
+    <div class="containers">
         
         <div class="navigation">
             <ul>
@@ -506,13 +508,45 @@
                     </a>
                 </li>               
                 <li>
-                    <a href="/addgame">
+                    <a href="/crudkategori">
                         <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
+                            <ion-icon name="menu-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Kategori</span>
+                        <span class="title">Kategori</span>
                     </a>
-                </li>              
+                </li>               
+                <li>
+                    <a href="/transaksi">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Transaksi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/crudpromo">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Promo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/addproduk">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add Product</span>
+                    </a>
+                </li>   
+                <li>
+                    <a href="/promo">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Influencer</span>
+                    </a>
+                </li>
                 <li>
                     <a href="/logout">
                         <span class="icon">
@@ -524,58 +558,38 @@
             </ul>
         </div>
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline" style="color: white;"></ion-icon>
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h1 class="mb-0 text-white">Add Produk</h1>
+                    
+                    <a href="/crudproduk" class="btn btn-primary">List produk</a>
                 </div>
-                <div class="toggle-buttons">
-                    <button id="showUserTable" class="btn">Show User Table</button>
-                    <button id="showAdminTable" class="btn">Show Admin Table</button>
-                </div>
-                <p style="color: white">Welcome, Security Admin {{session("user")}}</p>
-                <div class="user">
-                    <img src="{{ URL('customer01.jpg') }}" height="30px" width="30px">
-                </div>
-            </div>
-            <div class="details">
-                <div id="userTable" class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Table GAME</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nama Game</th>
-                            <th>Description</th>
-                            <th>Nama Kategori</th>
-                            <th>Image</th>
+                    <hr />
+                    <div class="container">
+                        <span class="navbar-text text-black me-2">
                             
-                        </tr>
-                        @foreach ($games as $item)
-                                <tr>
-                                    <td>{{ $item['id_game'] }}</td>
-                                    <td>{{ $item['name'] }}</td>
-                                    <td>{{ $item['description'] }}</td>
-                                    <td>{{ $item['nama_kategori'] }}</td>
-                                    <td><img src="{{ asset('uploads/game/' . $item->image) }}" alt="..."></td>
-                                    <td>
-                                        <form action="/securityadmin/update" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">
-                                            {{-- jek gaiso --}}
-                                            {{-- <a href="{{ route('game.updategame', $item->id_game) }}" type="button" class="btn btn-secondary">Update</a> --}}
-                                        </form>
-                                        <form action="/securityadmin/delete" method="post">  
-                                            @csrf    
-                                            <input type="hidden" name="id" value="{{ $item['id_game'] }}">                                      
-                                            <button type="submit" class="btn">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                        @endforeach
-                    </table>
-                </div>                
+                        </span>
+                        <hr />
+                        <form action="topup/insert" method="POST" enctype="">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" name="nama" class="form-control" placeholder="Nama"><br>
+                                    <select name="id_game" id="">
+                                        @foreach($game as $item)
+                                            <option value="{{ $item->id_game }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <input type="number" name="harga" class="form-control" placeholder="Harga produk"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
             </div>
         </div>
     </div>

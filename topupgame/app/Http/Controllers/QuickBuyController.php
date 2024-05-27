@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\Barang;
@@ -13,8 +14,6 @@ class QuickBuyController extends Controller
         if (!$game) {
             return redirect()->route('home')->with('error', 'Game not found');
         }
-        
-        $barang = Barang::all(); 
-        return view('quickbuy', compact('game', 'barang'));
+        return view('quickbuy', compact('game'));
     }
 }
