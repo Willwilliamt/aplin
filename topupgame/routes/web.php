@@ -9,6 +9,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\QuickBuyController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,14 +37,14 @@ Route::get('/crudpromo', [PromoController::class, 'index']);
 Route::get('/crudinfluencer', [InfluencerController::class, 'index']);
 
 Route::get('/addgame', [GameController::class, 'kategori']);
-
+Route::get('/addproduk',[ProdukController::class,'game']);
+Route::get('/crudproduk',[ProdukController::class,'index']);
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
 
 Route::get('/addkategori', function () {
     return view('addkategori');
 });
-
 Route::get('/addpromo', function () {
     return view('addpromo');
 });
@@ -75,7 +76,12 @@ Route::prefix('user')->group(function () {
 Route::prefix('game')->group(function () {
     Route::post('/insert', [GameController::class, 'insert']);
 });
-
+Route::prefix('topup')->group(function () {
+    Route::post('/insert', [ProdukController::class, 'insert']);
+    Route::get('show/{id}', [ProdukController::class, 'show'])->name('topup.show');
+    Route::put('edit/{id}', [ProdukController::class, 'update'])->name('topup.update');
+    Route::delete('destroy/{id}', [ProdukController::class, 'destroy'])->name('topup.destroy');
+});
 Route::prefix('kategori')->group(function () {
     Route::post('/insert', [KategoriController::class, 'insert']);
     Route::get('show/{id}', [KategoriController::class, 'show'])->name('kategori.show');
@@ -85,7 +91,7 @@ Route::prefix('kategori')->group(function () {
 
 
 Route::controller(BarangController::class)->prefix('products')->group(function () {
-    Route::get('show/{id}', 'show')->name('products.show');  
+    Route::get('show/{id}', 'show')->name('products.show');
     Route::put('edit/{id}', 'update')->name('products.update');
     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
 });
