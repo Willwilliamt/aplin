@@ -28,12 +28,12 @@ Route::get('/login', function () {
 Route::get('/home', [GameController::class, 'home'])->name('games');
 Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
 
+// Add the other routes as necessary...
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
 Route::get('/crudpromo', [PromoController::class, 'index']);
 Route::get('/crudinfluencer', [InfluencerController::class, 'index']);
 Route::get('/addgame', [GameController::class, 'kategori']);
-
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
 Route::get('/addkategori', function () {
@@ -108,3 +108,4 @@ Route::prefix('influencer')->group(function () {
     Route::put('edit/{id}', [InfluencerController::class, 'update'])->name('influencer.update');
     Route::delete('destroy/{id}', [InfluencerController::class, 'destroy'])->name('influencer.destroy');
 });
+?>
