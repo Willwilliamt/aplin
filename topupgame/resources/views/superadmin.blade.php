@@ -522,6 +522,22 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/crudpromo">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Promo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/promo">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                        <span class="title">Influencer</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>

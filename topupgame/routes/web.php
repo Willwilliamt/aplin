@@ -6,6 +6,9 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\InfluencerController;
+use App\Http\Controllers\QuickBuyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +21,36 @@ use App\Http\Controllers\GameController;
 |
 */
 
-Route::get('/', [KategoriController::class, 'home'])->name('home');
+Route::get('/', [KategoriController::class, 'home'])->name('homepage');
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/home', [GameController::class, 'home'])->name('games');
+Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
+Route::get('show-quick-buy/{id}', [GameController::class, 'showQuickBuyForm'])->name('show_quick_buy');
+
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
+
+Route::get('/crudpromo', [PromoController::class, 'index']);
+Route::get('/crudinfluencer', [InfluencerController::class, 'index']);
+
 Route::get('/addgame', [GameController::class, 'kategori']);
+
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
 
 Route::get('/addkategori', function () {
     return view('addkategori');
 });
+
+Route::get('/addpromo', function () {
+    return view('addpromo');
+});
+Route::get('/addinfluencer', function () {
+    return view('addinfluencer');
+});
+
 Route::get('/superadmin', function () {
     return view('superadmin');
 });
@@ -63,6 +83,7 @@ Route::prefix('kategori')->group(function () {
     Route::delete('destroy/{id}', [KategoriController::class, 'destroyCategory'])->name('kategori.destroy');
 });
 
+
 Route::controller(BarangController::class)->prefix('products')->group(function () {
     Route::get('show/{id}', 'show')->name('products.show');  
     Route::put('edit/{id}', 'update')->name('products.update');
@@ -71,3 +92,23 @@ Route::controller(BarangController::class)->prefix('products')->group(function (
 
 Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
+
+Route::prefix('securityadmin')->group(function () {
+    Route::post('/delete', [GameController::class, 'delete']);
+});
+
+
+
+Route::prefix('promo')->group(function () {
+    Route::post('/insert', [PromoController::class, 'insert']);
+    Route::get('show/{id}', [PromoController::class, 'show'])->name('promo.show');
+    Route::put('edit/{id}', [PromoController::class, 'update'])->name('promo.update');
+    Route::delete('destroy/{id}', [PromoController::class, 'destroy'])->name('promo.destroy');
+});
+
+Route::prefix('influencer')->group(function () {
+    Route::post('/insert', [InfluencerController::class, 'insert']);
+    Route::get('show/{id}', [InfluencerController::class, 'show'])->name('influencer.show');
+    Route::put('edit/{id}', [InfluencerController::class, 'update'])->name('influencer.update');
+    Route::delete('destroy/{id}', [InfluencerController::class, 'destroy'])->name('influencer.destroy');
+});
