@@ -126,3 +126,8 @@ Route::controller(GameController::class)->prefix('games')->group(function () {
     Route::put('edit/{id}', 'update')->name('games.update');
 
 });
+
+
+Route::post('/buyconsignment',[ConsignmentController::class,'buyview']);
+Route::post('/buybarang',[ConsignmentController::class,'buybarang']);
+
