@@ -34,6 +34,7 @@
                     <div class="col-md-6 mx-auto">
                         <input type="text" name="nama" class="form-control" placeholder="Nama Barang"><br>
                         <input type="number" name="harga" class="form-control" placeholder="Harga Barang">
+                        <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Barang">
                     </div>
                 </div>
                 <div class="row mb-3">

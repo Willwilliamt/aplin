@@ -37,6 +37,10 @@
                         <label class="form-label"><strong>Nama</strong></label>
                         <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $product->Nama_barang }}">
                     </div>
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>Deskripsi</strong></label>
+                        <input type="text" name="deskripsi" class="form-control" placeholder="Nama" value="{{ $product->deskripsi }}">
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">

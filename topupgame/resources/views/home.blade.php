@@ -149,6 +149,9 @@
                 <a class="nav-link fs-5 text-white" href="#category">Games</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link fs-5 text-white" href="/consignment">Consignment</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="#aboutus">About Us</a>
               </li>
               <li class="nav-item">

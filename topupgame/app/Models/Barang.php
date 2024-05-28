@@ -12,7 +12,8 @@ class Barang extends Model
         'Nama_barang', 
         'Harga_barang', 
         'id_kategori', 
-        'image'
+        'image',
+        'deskripsi'
     ];
 
     public function kategori()

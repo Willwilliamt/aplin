@@ -12,6 +12,7 @@ class BarangController extends Controller
         $data->nama_barang = $request->nama;
         $data->harga_barang = $request->harga;
         $data->id_kategori = $request->kategori;
+        $data->deskripsi = $request->deskripsi;
         $data->id_user = $request->session()->get('user_id');
 
         if($request->hasfile('image'))
@@ -54,6 +55,7 @@ class BarangController extends Controller
         $product->nama_barang = $request->input('nama');
         $product->harga_barang = $request->input('harga');
         $product->id_kategori = $request->input('kategori');
+        $product->deskripsi = $request->input('deskripsi');
 
         if ($request->hasFile('image')) {
 
