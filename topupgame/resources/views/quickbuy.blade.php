@@ -39,18 +39,10 @@
 
         <div class="dropdown-container mb-3">
             <div class="mb-3">
-                <label for="type" class="form-label">Tipe</label>
-                <select id="type" class="form-select">
-                    @foreach($barang as $item)
-                        <option value="{{ $item->Id_barang }}">{{ $item->Nama_barang }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
                 <label for="product" class="form-label">Produk</label>
                 <select id="product" class="form-select">
-                    @foreach($barang as $item)
-                        <option value="{{ $item->Id_barang }}">{{ $item->Nama_barang }} - Rp{{ number_format($item->Harga_barang, 0, ',', '.') }}</option>
+                    @foreach($topups as $topup)
+                    <option value="{{ $topup->ID_TOPUP }}">{{ $topup->Nama_topup }} - Rp{{ number_format($topup->harga_topup, 0, ',', '.') }}</option>
                     @endforeach
                 </select>
             </div>
