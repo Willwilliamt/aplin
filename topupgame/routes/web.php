@@ -131,3 +131,5 @@ Route::controller(GameController::class)->prefix('games')->group(function () {
 Route::post('/buyconsignment',[ConsignmentController::class,'buyview']);
 Route::post('/buybarang',[ConsignmentController::class,'buybarang']);
 
+Route::get('/transaksiconsign',[ConsignmentController::class,'showadmin']);
+

@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\Pengguna;
 use App\Models\transaksiConsign;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ConsignmentController extends Controller
 {
@@ -40,6 +41,18 @@ class ConsignmentController extends Controller
     
         $data->save();
         return redirect('/consignment');
+    }
+
+    public function showadmin(Request $request)
+    {
+        $trans = DB::table('transaksiConsign')
+        ->join('Barang', 'transaksiConsign.id_barang', '=', 'Barang.Id_barang')
+        ->join('users as pembeli', 'transaksiConsign.id_user', '=', 'pembeli.Id_user')
+        ->join('users as penjual', 'transaksiConsign.id_seller', '=', 'penjual.Id_user')
+        ->select('transaksiConsign.*', 'Barang.Nama_barang', 'pembeli.name as pembeli', 'penjual.name as penjual')
+        ->get();
+
+        return view('adminconsign', compact('trans'));
     }
 
     
