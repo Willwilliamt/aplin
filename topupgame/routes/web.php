@@ -9,6 +9,8 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\QuickBuyController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ConsignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +29,21 @@ Route::get('/login', function () {
 });
 Route::get('/home', [GameController::class, 'home'])->name('games');
 Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
+Route::get('show-quick-buy/{id}', [GameController::class, 'showQuickBuyForm'])->name('show_quick_buy');
 
-// Add the other routes as necessary...
 Route::get('/cruduser', [BarangController::class, 'index']);
 Route::get('/crudkategori', [KategoriController::class, 'index']);
+
 Route::get('/crudpromo', [PromoController::class, 'index']);
 Route::get('/crudinfluencer', [InfluencerController::class, 'index']);
+
 Route::get('/addgame', [GameController::class, 'kategori']);
+Route::get('/addproduk',[ProdukController::class,'game']);
+Route::get('/crudproduk',[ProdukController::class,'index']);
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
+Route::get('/consignment', [ConsignmentController::class, 'index']);
+
 Route::get('/addkategori', function () {
     return view('addkategori');
 });
@@ -45,9 +53,11 @@ Route::get('/addpromo', function () {
 Route::get('/addinfluencer', function () {
     return view('addinfluencer');
 });
+
 Route::get('/superadmin', function () {
     return view('superadmin');
 });
+
 
 Route::prefix('superadmin')->group(function () {
     Route::get('/', [PenggunaController::class, 'index']);
@@ -65,7 +75,6 @@ Route::prefix('pengguna')->group(function () {
 Route::prefix('user')->group(function () {
     Route::post('/insert', [BarangController::class, 'insert']);
 });
-
 Route::prefix('game')->group(function () {
     Route::post('/insert', [GameController::class, 'insert']);
 });
@@ -82,6 +91,7 @@ Route::prefix('kategori')->group(function () {
     Route::delete('destroy/{id}', [KategoriController::class, 'destroyCategory'])->name('kategori.destroy');
 });
 
+
 Route::controller(BarangController::class)->prefix('products')->group(function () {
     Route::get('show/{id}', 'show')->name('products.show');
     Route::put('edit/{id}', 'update')->name('products.update');
@@ -94,6 +104,8 @@ Route::get('/signup', [PenggunaController::class, 'signup'])->name('signup');
 Route::prefix('securityadmin')->group(function () {
     Route::post('/delete', [GameController::class, 'delete']);
 });
+
+
 
 Route::prefix('promo')->group(function () {
     Route::post('/insert', [PromoController::class, 'insert']);
@@ -108,4 +120,16 @@ Route::prefix('influencer')->group(function () {
     Route::put('edit/{id}', [InfluencerController::class, 'update'])->name('influencer.update');
     Route::delete('destroy/{id}', [InfluencerController::class, 'destroy'])->name('influencer.destroy');
 });
-?>
+
+Route::controller(GameController::class)->prefix('games')->group(function () {
+    Route::get('show/{id}', 'show')->name('games.show');  
+    Route::put('edit/{id}', 'update')->name('games.update');
+
+});
+
+
+Route::post('/buyconsignment',[ConsignmentController::class,'buyview']);
+Route::post('/buybarang',[ConsignmentController::class,'buybarang']);
+
+Route::get('/transaksiconsign',[ConsignmentController::class,'showadmin']);
+

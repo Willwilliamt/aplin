@@ -57,4 +57,39 @@ class GameController extends Controller
         $data->delete();
         return redirect('/securityadmin');
     }
+
+
+    public function show(string $id)
+{
+    $product = Game::findOrFail($id);
+    $categories = Kategori::all();
+
+    return view('updategame', compact('product', 'categories'));
+}
+
+
+    public function update(Request $request, string $id) {
+        $product = Game::findOrFail($id);
+        $product->name = $request->input('nama');
+        $product->description = $request->input('deskripsi');
+        $product->nama_kategori = $request->input('kategori');
+
+        if ($request->hasFile('image')) {
+
+            $oldImage = public_path('uploads/barang/' . $product->image);
+            if (file_exists($oldImage)) {
+                @unlink($oldImage);
+            }
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/game/', $filename);
+            $product->image = $filename;
+        }
+
+        $product->save();
+
+        return redirect('securityadmin');
+    }
 }

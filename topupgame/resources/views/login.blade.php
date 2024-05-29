@@ -114,11 +114,11 @@
             <form action="/pengguna/insert" method="post">
                 @csrf
                 <label for="chk" aria-hidden="true">Sign Up</label>
-                <input type="text" name="username" id="username" placeholder="username">
-                <input type="password" name="password" id="password" placeholder="password">
-                <input type="text" name="name" id="name" placeholder="Name">
-                <input type="email" name="email" id="email" placeholder="Email">
-                <input type="text" name="phone" id="phone" placeholder="Phone">
+                <input type="text" name="username" id="username" placeholder="username" required>
+                <input type="password" name="password" id="password" placeholder="password" required>
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="text" name="phone" id="phone" placeholder="Phone" required>
                 <button>Sign Up</button>
             </form>
 

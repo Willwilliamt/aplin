@@ -23,41 +23,37 @@
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container p-5 box">
-            <h1 class="text-center">Update Product</h1>
+            <h1 class="text-center">Update Game</h1>
             <hr />
-            <form action="{{ route('products.update', $product->Id_barang) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('games.update', $product->id_game) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
                     <div class="col mb-3">
                         <label class="form-label"><strong>ID</strong></label>
-                        <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->Id_barang }}" readonly>
+                        <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->id_game }}" readonly>
                     </div>
                     <div class="col mb-3">
                         <label class="form-label"><strong>Nama</strong></label>
-                        <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $product->Nama_barang }}">
-                    </div>
-                    <div class="col mb-3">
-                        <label class="form-label"><strong>Deskripsi</strong></label>
-                        <input type="text" name="deskripsi" class="form-control" placeholder="Nama" value="{{ $product->deskripsi }}">
+                        <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $product->name }}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
                         <label class="form-label"><strong>Harga</strong></label>
-                        <input type="text" name="harga" class="form-control" placeholder="Harga" value="{{ $product->Harga_barang }}">
+                        <input type="text" name="deskripsi" class="form-control" placeholder="Harga" value="{{ $product->description }}">
                     </div>
                     <div class="col mb-3">
                         <select name="kategori" class="form-control">
                             @foreach($categories as $category)
-                                <option value="{{ $category->Id_kategori }}">{{ $category->nama_kategori }}</option>
+                                <option value="{{ $category->nama_kategori }}">{{ $category->nama_kategori }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col mb-3">
                         <label class="form-label"><strong>Current Image</strong></label>
                         <div>
-                            <img src="{{ asset('uploads/barang/' . $product->image) }}" alt="" width="100px" height="100px">
+                            <img src="{{ asset('uploads/game/' . $product->image) }}" alt="" width="100px" height="100px">
                         </div>
                     </div>
                     <div class="col mb-3">
