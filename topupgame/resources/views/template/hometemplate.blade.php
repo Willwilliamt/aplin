@@ -143,7 +143,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active fs-5 text-white" aria-current="page" href="#home">Home</a>
+                <a class="nav-link active fs-5 text-white" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="#category">Games</a>

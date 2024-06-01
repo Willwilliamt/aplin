@@ -13,7 +13,12 @@ class ConsignmentController extends Controller
 {
     public function index(Request $request)
     {
-        $barang = Barang::all();
+        $search = $request->input('search');
+        if ($search) {
+            $barang = Barang::where('Nama_barang', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $barang = Barang::all();
+        }
         return view('consignment', compact('barang'));
     }
     public function buyview(Request $request)
