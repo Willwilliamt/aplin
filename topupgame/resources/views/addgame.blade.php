@@ -14,7 +14,7 @@
             margin: 0;
         }
         .box {
-            background-color: #FFE6E6;
+            background: linear-gradient(#AD88C6, #FFE6E6);
             padding: 2rem;
             border-radius: 10px;
         }
