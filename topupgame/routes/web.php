@@ -132,4 +132,8 @@ Route::post('/buyconsignment',[ConsignmentController::class,'buyview']);
 Route::post('/buybarang',[ConsignmentController::class,'buybarang']);
 
 Route::get('/transaksiconsign',[ConsignmentController::class,'showadmin']);
+Route::get('/userconsign',[ConsignmentController::class,'showuser']);
+Route::get('/sellerconsign',[ConsignmentController::class,'showseller']);
+Route::patch('/confirm-transaction/{id}', [ConsignmentController::class, 'confirmTransaction'])->name('confirmTransaction');
+
 

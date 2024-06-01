@@ -6,6 +6,13 @@
   <div class="cardBag p-5" id="category">
   <h1 class="text-center">Vouchers & Games</h1>
         <div class="d-flex justify-content-center p-3">
+            <form action="{{ url('/') }}" method="GET" class="d-flex">
+                <input type="text" style="border: 1px solid;border-radius:5px;width:250px;height:50px;padding:15px" name="search" placeholder="Search by item name">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form><br><br>
+
+        </div>
+        <div class="d-flex justify-content-center p-3">
             <button class="btn btn-primary me-2" id="allBtn">All</button>
             @foreach($categories as $category)
                 <button class="btn btn-primary me-2" id="{{ strtoupper($category->nama_kategori) }}Btn">{{ $category->nama_kategori }}</button>

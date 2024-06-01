@@ -143,7 +143,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active fs-5 text-white" aria-current="page" href="#home">Home</a>
+                <a class="nav-link active fs-5 text-white" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="#category">Games</a>
@@ -165,7 +165,9 @@
                     Welcome, {{ Session::get('user') }}!
                 </span>
                 <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a> &nbsp;
-                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a>
+                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a> &nbsp;
+                <a class="btn btn-success text-uppercase text-white" href="/userconsign">Transaksi Consign</a>
+                <a class="btn btn-success text-uppercase text-white" href="/sellerconsign">Seller Consign</a>
             @else
                 <a class="btn btn-warning text-uppercase text-white" href="/signup">Sign Up</a>
             @endif

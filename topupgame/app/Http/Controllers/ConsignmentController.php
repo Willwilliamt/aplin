@@ -13,7 +13,12 @@ class ConsignmentController extends Controller
 {
     public function index(Request $request)
     {
-        $barang = Barang::all();
+        $search = $request->input('search');
+        if ($search) {
+            $barang = Barang::where('Nama_barang', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $barang = Barang::all();
+        }
         return view('consignment', compact('barang'));
     }
     public function buyview(Request $request)
@@ -54,6 +59,52 @@ class ConsignmentController extends Controller
 
         return view('adminconsign', compact('trans'));
     }
+
+    public function confirmTransaction($id)
+    {
+        $trans = DB::table('transaksiConsign')
+        ->join('Barang', 'transaksiConsign.id_barang', '=', 'Barang.Id_barang')
+        ->join('users as pembeli', 'transaksiConsign.id_user', '=', 'pembeli.Id_user')
+        ->join('users as penjual', 'transaksiConsign.id_seller', '=', 'penjual.Id_user')
+        ->select('transaksiConsign.*', 'Barang.Nama_barang', 'pembeli.name as pembeli', 'penjual.name as penjual')
+        ->get();
+
+        $transaction = transaksiConsign::findOrFail($id);
+        $transaction->status = 1;
+        $transaction->save();
+
+        return view('adminconsign', compact('trans'));
+    }
+
+
+    public function showuser(Request $request)
+    {
+        $userId = $request->session()->get('user_id');
+        $trans = DB::table('transaksiConsign')
+        ->join('Barang', 'transaksiConsign.id_barang', '=', 'Barang.Id_barang')
+        ->join('users as pembeli', 'transaksiConsign.id_user', '=', 'pembeli.Id_user')
+        ->join('users as penjual', 'transaksiConsign.id_seller', '=', 'penjual.Id_user')
+        ->select('transaksiConsign.*', 'Barang.Nama_barang', 'pembeli.name as pembeli', 'penjual.name as penjual')
+        ->where('transaksiConsign.id_user', $userId)
+        ->get();
+
+        return view('transaksiconsignuser', compact('trans'));
+    }
+    public function showseller(Request $request)
+    {
+        $userId = $request->session()->get('user_id');
+        $trans = DB::table('transaksiConsign')
+        ->join('Barang', 'transaksiConsign.id_barang', '=', 'Barang.Id_barang')
+        ->join('users as pembeli', 'transaksiConsign.id_user', '=', 'pembeli.Id_user')
+        ->join('users as penjual', 'transaksiConsign.id_seller', '=', 'penjual.Id_user')
+        ->select('transaksiConsign.*', 'Barang.Nama_barang', 'pembeli.name as pembeli', 'penjual.name as penjual')
+        ->where('transaksiConsign.id_seller', $userId)
+        ->get();
+
+        return view('sellerconsign', compact('trans'));
+    }
+
+
 
     
 
