@@ -165,7 +165,9 @@
                     Welcome, {{ Session::get('user') }}!
                 </span>
                 <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a> &nbsp;
-                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a>
+                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a> &nbsp;
+                <a class="btn btn-success text-uppercase text-white" href="/userconsign">Transaksi Consign</a>
+                <a class="btn btn-success text-uppercase text-white" href="/sellerconsign">Seller Consign</a>
             @else
                 <a class="btn btn-warning text-uppercase text-white" href="/signup">Sign Up</a>
             @endif
