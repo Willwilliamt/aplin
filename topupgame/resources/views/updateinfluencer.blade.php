@@ -43,8 +43,7 @@
                         <label class="form-label"><strong>Platform</strong></label>
                         <input type="text" name="platform" class="form-control" value="{{ $promo->platform }}">
                     </div>
-        
-        
+    
                 </div>
                 <div class="row">
                     <div class="d-grid col-md-2 mx-auto">
