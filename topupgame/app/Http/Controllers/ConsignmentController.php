@@ -19,6 +19,7 @@ class ConsignmentController extends Controller
         } else {
             $barang = Barang::all();
         }
+
         return view('consignment', compact('barang'));
     }
     public function buyview(Request $request)
@@ -31,19 +32,20 @@ class ConsignmentController extends Controller
         $request->session()->put('id_barang', $id_barang);
 
         $barang = Barang::find($id_barang);
-        $pengguna = Pengguna::find($id_seller);
 
-        return view('buyconsignment', compact('barang'),compact('pengguna'));
+        $pengguna = Pengguna::find($id_seller);
+        $admin = Pengguna::where('role', 1)->get();
+        return view('buyconsignment', compact('barang','admin','pengguna'));
     }
     public function buybarang(Request $request){
         $data = new transaksiConsign;
         $data->id_barang = $request->idbarang;
         $data->id_user = $request->iduser;
         $data->id_seller = $request->idseller;
-        $data->Tanggal_transaksi = Carbon::now(); 
+        $data->Tanggal_transaksi = Carbon::now();
         $data->status = '0';
-        $data->nama_admin = 'rico';
-    
+        $data->nama_admin = $request->id_admin;
+
         $data->save();
         return redirect('/consignment');
     }
@@ -106,6 +108,6 @@ class ConsignmentController extends Controller
 
 
 
-    
+
 
 }

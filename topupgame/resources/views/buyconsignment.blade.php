@@ -13,7 +13,7 @@
 
     <h3>
         Nama Barang: {{$barang ->Nama_barang}}
-        
+
     </h3>
     <h3>
         Nama Penjual: {{$pengguna ->name}}
@@ -23,6 +23,11 @@
     <h3>Harga : {{$barang ->Harga_barang}}</h3>
     <form action="/buybarang" method="post">
         @csrf
+        <select name="id_admin" id="">
+            @foreach($admin as $item)
+                <option value="{{ $item->name }}">{{ $item->name }}</option>
+            @endforeach
+        </select>
         <input type="hidden" name="idbarang" value="{{ Session::get('id_barang') }}">
         <input type="hidden" name="idseller" value="{{ Session::get('id_seller') }}">
         <input type="hidden" name="iduser" value="{{ Session::get('user_id') }}">
