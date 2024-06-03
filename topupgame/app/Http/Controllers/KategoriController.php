@@ -101,4 +101,18 @@ class KategoriController extends Controller
         $category->delete();
         return redirect('/crudkategori');
     }
+
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        if ($search) {
+            $game = Game::where('name', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $game = Game::all();
+        }
+
+        return view('partials.game_results', compact('game'));
+    }
+
 }

@@ -106,6 +106,20 @@ class ConsignmentController extends Controller
         return view('sellerconsign', compact('trans'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        if ($search) {
+            $barang = Barang::where('Nama_barang', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $barang = Barang::all();
+        }
+
+        return view('partials.consignment_results', compact('barang'));
+    }
+
+
+
 
 
 

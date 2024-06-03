@@ -136,4 +136,7 @@ Route::get('/userconsign',[ConsignmentController::class,'showuser']);
 Route::get('/sellerconsign',[ConsignmentController::class,'showseller']);
 Route::patch('/confirm-transaction/{id}', [ConsignmentController::class, 'confirmTransaction'])->name('confirmTransaction');
 
+Route::get('/consignment/search', [ConsignmentController::class, 'search']);
+
+Route::get('/games/search', [KategoriController::class, 'search']);
 
