@@ -9,12 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
-            background: linear-gradient(#7469B6, #AD88C6, #E1AFD1);
+            background: url(simplegaming.jpg) center / cover;
             height: 100vh;
             margin: 0;
         }
         .box {
-            background: linear-gradient(#AD88C6, #FFE6E6);
+            background-color: #fff5;
+            backdrop-filter: blur(7px);
             padding: 2rem;
             border-radius: 10px;
         }
@@ -49,7 +50,7 @@
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container w-50 p-5 box">
-            <h1 class="text-center">Add Game</h1><br>
+            <h1 class="text-center text-white">Add Game</h1><br>
             <form action="game/insert" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -74,7 +75,7 @@
                     </div>
                 </div>
                 <div class="d-grid col-md-2 mx-auto">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"><strong>Submit</strong></button>
                 </div>
             </form>
         </div>

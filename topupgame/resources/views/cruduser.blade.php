@@ -5,50 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>List Barang</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        body{
-            background: linear-gradient(#F1EAFF,#E5D4FF,#DCBFFF);
-            height: 100vh; 
-            margin: 0;
+        @media print {
+            .table, .table__body {
+                overflow: visible;
+                height: auto !important;
+                width: auto !important;
+            }
         }
-        .box{
-            background: linear-gradient(#F1EAFF,#E5D4FF,#DCBFFF);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid black;
+        body {
+            min-height: 100vh;
+            background: url(html_table.jpg) center / cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .text{
-            color: #F1EAFF;
+
+        main.table {
+            width: 82vw;
+            height: 90vh;
+            background-color: #fff5;
+            backdrop-filter: blur(7px);
+            box-shadow: 0 .4rem .8rem #0005;
+            border-radius: .8rem;
+            overflow: hidden;
         }
-        .bodyTable{
-            background-color: #D0A2F7;
+
+        .table__body {
+            width: 95%;
+            max-height: calc(89% - 1.6rem);
+            background-color: #fffb;
+            margin: .8rem auto;
+            border-radius: .6rem;
+            overflow: auto;
+            overflow: overlay;
         }
-        .buton{
-            background: #E7BCDE;
+
+        .table__body::-webkit-scrollbar {
+            width: 0.5rem;
+            height: 0.5rem;
         }
-        .buton:hover {
-            background: rgba(255, 255, 255, 0.3);
+
+        .table__body::-webkit-scrollbar-thumb {
+            border-radius: .5rem;
+            background-color: #0004;
+            visibility: hidden;
+        }
+
+        .table__body:hover::-webkit-scrollbar-thumb { 
+            visibility: visible;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        thead th {
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: #d5d1defe;
+            cursor: pointer;
+            text-transform: capitalize;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #0000000b;
+        }
+
+        tbody tr {
+            --delay: .1s;
+            transition: .5s ease-in-out var(--delay), background-color 0s;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(223, 227, 233, 0.4) !important;
+        }
+        .btn1 {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #D895DA;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
-        <span class="navbar-text text me-2">
-            Welcome, {{ Session::get('user') }}!
-        </span>
-        <div class="container box p-5">
-            <a href="/" class="btn buton">Back</a>
-            <div class="">
-                <h1 class="text-center">List Barang</h1>
-                <a href="/addbarang" class="btn buton">Add Barang</a>
-            </div>
-            <hr />
-            <table class="table table-hover" >
+    <main class="table p-3">
+        <section  class="table__header">
+            <a href="/" class="btn1">Back</a>
+            <h1 class="text-center">List Barang</h1>
+            <a href="/addbarang" class="btn1">Add Barang</a>
+        </section>
+        <section class="table__body">
+            <table class="table table-hover">
                 <thead class="table-primary text-center">
-                    <tr>         
+                    <tr>
                         <th>ID</th>
                         <th>Nama Barang</th>
                         <th>Harga Barang</th>
@@ -81,9 +149,8 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>  
-        </div>
-    </div>
-
+            </table>
+        </section>
+    </main>
 </body>
 </html>

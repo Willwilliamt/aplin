@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="d-grid">
-                <button class="btn btn-warning" type="submit">Update</button>
+                <button class="btn btn-primary" type="submit">Update</button>
             </div>
         </div>
     </form>

@@ -10,20 +10,21 @@
 </head>
 <style>
     body{
-        background: linear-gradient(#E26EE5,#7E30E1,#49108B);
-        height: 100vh; 
+        background: linear-gradient(#1F2544,#474F7A,#81689D);
+        height: 100vh;
         margin: 0;
     }
-    .box{
-        background: #F3F8FF;
-        padding: 2rem;
+    .box {
+        background:  #fff5;
+        padding: 3rem;
         border-radius: 10px;
+        backdrop-filter: blur(7px);
     }
 </style>
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container p-5 box">
-            <h1 class="text-center">Update Game</h1>
+            <h1 class="text-center text-white">Update Game</h1>
             <hr />
             <form action="{{ route('games.update', $product->id_game) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -44,6 +45,7 @@
                         <input type="text" name="deskripsi" class="form-control" placeholder="Harga" value="{{ $product->description }}">
                     </div>
                     <div class="col mb-3">
+                        <label for="" class="form-label"><strong>Kategori</strong></label>
                         <select name="kategori" class="form-control">
                             @foreach($categories as $category)
                                 <option value="{{ $category->nama_kategori }}">{{ $category->nama_kategori }}</option>
@@ -63,7 +65,7 @@
                 </div>
                 <div class="row">
                     <div class="d-grid col-md-2 mx-auto">
-                        <button class="btn btn-warning" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit"><strong>Update</strong></button>
                     </div>
                 </div>
             </form>

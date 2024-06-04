@@ -9,25 +9,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-TlZzthgzo+Oj0bgdJ2yRbYNzeIW2alA0wulb1LV2a4oYYMMsmWi+0MaZ2MtbAs+leEKRkYOyBjZfHKR7FVT8wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            background: linear-gradient(#D20062, #D6589F, #D895DA);
+            background: url(bground1.jpeg) center / cover;
             margin: 0;
             height: 100vh;
         }
         .box {
-            background: #C4E4FF;
+            background: #fff5;
+            backdrop-filter: blur(7px);
             padding: 3rem;
             border-radius: 10px;
+        }
+        .btn1{
+            background: #96EFFF;
+            color: black;
+        }
+        .btn1:hover{
+            background: #96efff6e;
+            color: black;
         }
     </style>
 </head>
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container box">
-            <h1 class="text-center">Detail Barang</h1>
-            <a href="/consignment" class="btn btn-secondary mb-3" type="button"><strong>Back</strong></a>
+            <a href="/consignment" class="btn btn1 mb-3" type="button"><strong>Back</strong></a>
+            <h1 class="text-center">Detail Barang</h1><br>
             <div class="row">
                 <div class="col-md-4 d-flex justify-content-center align-items-start">
-                    <img src="{{ asset('uploads/barang/' . $barang->image) }}" alt="" width="150px" height="150px">
+                    <img src="{{ asset('uploads/barang/' . $barang->image) }}" alt="" width="250px" height="250px">
                 </div>
                 <div class="col-md-8">
                     <p><strong>Nama Barang : {{$barang->Nama_barang}}</strong></p>

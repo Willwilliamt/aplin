@@ -14,11 +14,13 @@
         height: 100vh;
         margin: 0;
     }
-    .box{
-        background: linear-gradient(#81689D,#FFD0EC);
+    .box {
+        background:  #fff5;
         padding: 3rem;
         border-radius: 10px;
+        backdrop-filter: blur(7px);
     }
+
 </style>
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
@@ -47,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="d-grid col-md-2 mx-auto">
-                        <button class="btn btn-warning" type="submit"><strong>Update</strong></button>
+                        <button class="btn btn-primary" type="submit"><strong>Update</strong></button>
                     </div>
                 </div>
             </form>
