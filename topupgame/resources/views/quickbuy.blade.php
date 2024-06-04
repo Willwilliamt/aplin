@@ -21,7 +21,6 @@
             gap: 1rem;
         }
         .order-info {
-            /* border: 1px solid #ddd; */
             padding: 1rem;
             border-radius: 5px;
         }
