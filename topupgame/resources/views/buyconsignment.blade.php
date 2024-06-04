@@ -32,11 +32,11 @@
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container box">
-            <a href="/consignment" class="btn btn1 mb-3" type="button"><strong>Back</strong></a>
-            <h1 class="text-center">Detail Barang</h1><br>
+            <h1 class="text-center">Detail Barang</h1>
+            <a href="/consignment" class="btn btn-secondary mb-3" type="button"><strong>Back</strong></a>
             <div class="row">
                 <div class="col-md-4 d-flex justify-content-center align-items-start">
-                    <img src="{{ asset('uploads/barang/' . $barang->image) }}" alt="" width="250px" height="250px">
+                    <img src="{{ asset('uploads/barang/' . $barang->image) }}" alt="" width="150px" height="150px">
                 </div>
                 <div class="col-md-8">
                     <p><strong>Nama Barang : {{$barang->Nama_barang}}</strong></p>

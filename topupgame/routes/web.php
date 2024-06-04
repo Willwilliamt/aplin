@@ -11,6 +11,7 @@ use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\QuickBuyController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ConsignmentController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::get('/', [KategoriController::class, 'home'])->name('homepage');
 Route::get('/login', function () {
     return view('login');
 });
+
+
+Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
+Route::post('/purchase/{id}', [PaymentController::class, 'purchase']);
 Route::get('/home', [GameController::class, 'home'])->name('games');
 Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
 Route::get('show-quick-buy/{id}', [GameController::class, 'showQuickBuyForm'])->name('show_quick_buy');
@@ -136,4 +141,7 @@ Route::get('/userconsign',[ConsignmentController::class,'showuser']);
 Route::get('/sellerconsign',[ConsignmentController::class,'showseller']);
 Route::patch('/confirm-transaction/{id}', [ConsignmentController::class, 'confirmTransaction'])->name('confirmTransaction');
 
+Route::get('/consignment/search', [ConsignmentController::class, 'search']);
+
+Route::get('/games/search', [KategoriController::class, 'search']);
 
