@@ -16,11 +16,19 @@ class KategoriController extends Controller
         return view('crudkategori', compact('categories'));
     }
 
-    public function home()
+    public function home(Request $request)
     {
+        $search = $request->input('search');
+    
         $categories = Kategori::all();
-        $game = Game::all();
-        return view('home', ['categories' => $categories,'game' => $game]);
+        
+        if ($search) {
+            $game = Game::where('name', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $game = Game::all();
+        }
+        
+        return view('home', ['categories' => $categories, 'game' => $game]);
     }
     public function create()
     {
@@ -93,4 +101,18 @@ class KategoriController extends Controller
         $category->delete();
         return redirect('/crudkategori');
     }
+
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        if ($search) {
+            $game = Game::where('name', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $game = Game::all();
+        }
+
+        return view('partials.game_results', compact('game'));
+    }
+
 }

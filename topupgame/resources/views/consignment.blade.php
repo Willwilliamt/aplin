@@ -1,24 +1,32 @@
 @extends('template.hometemplate')
 @section('consign')
     <br>
-<h1 class="text-center">Consign</h1>
-        <div style="display: flex; justify-content: space-evenly;">
-            @foreach ($barang as $index)
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('uploads/barang/' . $index->image) }}" class="card-img-top" alt="..." width="100px" height="150px">
-                <div class="card-body">
-                    <h3 class="card-title">{{ $index->Nama_barang }}</h3>
-                    <h5 class="card-title">{{ $index->Harga_barang }}</h5>
-                    <p class="card-text">{{ $index->deskripsi }}</p>
-                    <form action="/buyconsignment" method="POST">
-                        @csrf
-                        <input type="hidden" name="id_barang" value="{{ $index->Id_barang }}">
-                        <input type="hidden" name="id_seller" value="{{ $index->id_user }}">
-                        <button type="submit" class="btn btn-secondary">BUY</button>
-                    </form>
-                </div>
-            </div>
-            @endforeach
-        </div><br>
+    <h1 class="text-center">Consign</h1>
+    <div class="text-center">
+        <input type="text" id="search" style="border: 1px solid;border-radius:5px;width:250px;height:50px;padding:15px" name="search" placeholder="Search by item name">
+    </div>
+    <br>
 
+    <div id="results" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+        @include('partials.consignment_results', ['barang' => $barang])
+    </div>
+    <br>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ url('/consignment/search') }}",
+                    type: "GET",
+                    data: {'search': query},
+                    success: function(data) {
+                        $('#results').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
+    
