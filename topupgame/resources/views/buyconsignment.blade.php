@@ -46,9 +46,17 @@
                     <div class="d-flex justify-content-center mt-4">
                         <form action="/buybarang" method="post">
                             @csrf
+                            <p><strong>Pilih Admin: </strong></p>
+                            <select name="id_admin" id="">
+                                @foreach($admin as $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <p><strong>Kode Promo: </strong></p><input type="text" name="promo" id=""><br>
                             <input type="hidden" name="idbarang" value="{{ Session::get('id_barang') }}">
                             <input type="hidden" name="idseller" value="{{ Session::get('id_seller') }}">
                             <input type="hidden" name="iduser" value="{{ Session::get('user_id') }}">
+                            <input type="hidden" name="harga" value="{{$barang->Harga_barang}}">
                             <button type="submit" class="btn btn-success">Buy Now</button>
                         </form>
                     </div>

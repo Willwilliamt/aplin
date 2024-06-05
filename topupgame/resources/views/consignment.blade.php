@@ -6,7 +6,15 @@
         <input type="text" id="search" style="border: 1px solid;border-radius:5px;width:250px;height:50px;padding:15px" name="search" placeholder="Search by item name">
     </div>
     <br>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li><h1>{{ $error }}</h1></li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div id="results" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
         @include('partials.consignment_results', ['barang' => $barang])
     </div>
@@ -29,4 +37,3 @@
         });
     </script>
 @endsection
-    
