@@ -68,7 +68,7 @@
     @csrf
     <input type="hidden" name="payment_type" id="payment_type" value="snap">
     <input type="hidden" name="snap_token" id="snap_token">
-    <form action="{{ url('/purchase', ['id' => $game->id_game]) }}" method="POST" id="payment-form">
+    <form action="{{ route('quickbuy.purchase', ['id_game' => $game->id_game]) }}" method="POST" id="payment-form">
     @csrf
     <input type="hidden" name="snap_token" id="snap_token">
 
@@ -94,6 +94,7 @@
     
     <button type="button" id="pay-button" class="btn btn-success">Beli Sekarang</button>
 </form>
+
 
 
         </div>

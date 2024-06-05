@@ -53,18 +53,18 @@ class PaymentController extends Controller
         }
     }
 
-    public function purchase(Request $request, $id)
+    public function purchase(Request $request, $id_game)
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
             'zone_id' => 'required',
-            'quantity' => 'required|integer|min=1',
+            'quantity' => 'required|integer|min:1',
             'snap_token' => 'required'
-        ]);
+        ]);        
 
         TransaksiTopUpGame::create([
             'id_user' => $request->user_id,
-            'game_name' => 'Some Game Name',
+            'game_name' => Game::find($id_game)->name, 
             'jumlah_topup' => $request->quantity,
             'Tanggal_transaksi' => now(),
         ]);

@@ -29,7 +29,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::post('/purchase/{id}', [PaymentController::class, 'purchase']);
+Route::post('/quickbuy/{id_game}', [PaymentController::class, 'purchase'])->name('quickbuy.purchase');
 Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
 Route::get('/home', [GameController::class, 'home'])->name('games');
 Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
