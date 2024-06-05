@@ -18,6 +18,9 @@
                                 <div class="col">
                                     <input type="text" name="nama" class="form-control" placeholder="Nama Influencer"><br>
                                     <input type="text" name="platform" class="form-control" placeholder="Platform"><br>
+                                    <input type="text" name="waktu" class="form-control" placeholder="Waktu Kontrak"><br>
+                                    <input type="text" name="kode" class="form-control" placeholder="Kode Promo Untuk Influencer"><br>
+                                    <input type="text" name="jumlah" class="form-control" placeholder="Jumlah Promo"><br>
                                     
                                 </div>
                                 
