@@ -29,9 +29,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
-
-Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
 Route::post('/purchase/{id}', [PaymentController::class, 'purchase']);
+Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
 Route::get('/home', [GameController::class, 'home'])->name('games');
 Route::get('/quickbuy/{id_game}', [QuickBuyController::class, 'quickbuy'])->name('quickbuy');
 Route::get('show-quick-buy/{id}', [GameController::class, 'showQuickBuyForm'])->name('show_quick_buy');
