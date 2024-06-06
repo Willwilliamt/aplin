@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class transaksiConsign extends Model
 {
-    // use HasFactory;
-
     protected $table = 'transaksiconsign';
 
     protected $primaryKey = 'id_consign';

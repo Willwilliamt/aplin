@@ -53,15 +53,11 @@
                         </select>
                     </div>
                     <div class="col mb-3">
-                        <label class="form-label"><strong>Current Image</strong></label>
+                        <label class="form-label"><strong>Current Image 1</strong></label>
                         <div>
                             <img src="{{ asset('uploads/game/' . $product->image) }}" alt="" width="100px" height="100px">
                         </div>
-                    </div>
-                    <div class="col mb-3">
-                        <label class="form-label"><strong>New Image</strong></label>
-                        <input type="file" name="image" class="form-control">
-                    </div>
+                   
                 </div>
                 <div class="row">
                     <div class="d-grid col-md-2 mx-auto">

@@ -7,12 +7,11 @@
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <style>
-                
+
         @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-        /* =============== Globals ============== */
         * {
         font-family: "Ubuntu", sans-serif;
         margin: 0;
@@ -38,8 +37,6 @@
         position: relative;
         width: 100%;
         }
-
-        /* =============== Navigation ================ */
         .navigation {
         position: fixed;
         width: 300px;
@@ -112,8 +109,6 @@
         text-align: start;
         white-space: nowrap;
         }
-
-        /* --------- curve outside ---------- */
         .navigation ul li:hover a::before,
         .navigation ul li.hovered a::before {
         content: "";
@@ -140,8 +135,6 @@
         box-shadow: 35px -35px 0 10px var(--white);
         pointer-events: none;
         }
-
-        /* ===================== Main ===================== */
         .main {
         position: absolute;
         width: calc(100% - 300px);
@@ -154,7 +147,6 @@
         width: calc(100% - 80px);
         left: 80px;
         }
-
         .topbar {
         width: 100%;
         height: 60px;
@@ -163,7 +155,6 @@
         align-items: center;
         padding: 0 10px;
         }
-
         .toggle {
         position: relative;
         width: 60px;
@@ -174,18 +165,15 @@
         font-size: 2.5rem;
         cursor: pointer;
         }
-
         .search {
         position: relative;
         width: 400px;
         margin: 0 10px;
         }
-
         .search label {
         position: relative;
         width: 100%;
         }
-
         .search label input {
         width: 100%;
         height: 40px;
@@ -196,14 +184,12 @@
         outline: none;
         border: 1px solid var(--black2);
         }
-
         .search label ion-icon {
         position: absolute;
         top: 0;
         left: 10px;
         font-size: 1.2rem;
         }
-
         .user {
         position: relative;
         width: 40px;
@@ -471,7 +457,7 @@
         }
         .toggle {
             z-index: 10001;
-            
+
         }
         .main.active .toggle {
             color: #fff;
@@ -487,7 +473,7 @@
 <body>
     <!-- =============== Navigation ================ -->
     <div class="containers">
-        
+
         <div class="navigation">
             <ul>
                 <li>
@@ -506,7 +492,7 @@
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
-                </li>               
+                </li>
                 <li>
                     <a href="/crudkategori">
                         <span class="icon">
@@ -514,7 +500,7 @@
                         </span>
                         <span class="title">Kategori</span>
                     </a>
-                </li>               
+                </li>
                 <li>
                     <a href="/transaksi">
                         <span class="icon">
@@ -538,7 +524,7 @@
                         </span>
                         <span class="title">Add Product</span>
                     </a>
-                </li>   
+                </li>
                 <li>
                     <a href="/crudinfluencer">
                         <span class="icon">
@@ -558,7 +544,7 @@
             </ul>
         </div>
         <div class="main">
- 
+
             @yield('content')
 
 </div>

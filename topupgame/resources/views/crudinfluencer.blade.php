@@ -15,6 +15,7 @@
                                 <th>ID</th>
                                 <th>Nama Influencer</th>
                                 <th>Platform</th>
+                                <th>Masa Kontrak</th>
                       
                                 <th>Action</th>
                                 
@@ -27,6 +28,7 @@
                                     <td class="align-middle">{{ $barang->Id_influencer }}</td>
                                     <td class="align-middle">{{ $barang->Nama_influencer }}</td>
                                     <td class="align-middle">{{ $barang->platform }}</td>
+                                    <td class="align-middle">{{ $barang->waktu }}</td>
                                     
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic Example">

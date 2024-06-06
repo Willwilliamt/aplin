@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Pengguna;
+use App\Models\Promo;
+use App\Models\Game;
 use App\Models\transaksiConsign;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -26,25 +28,49 @@ class ConsignmentController extends Controller
     {
         $id_seller = $request->input('id_seller');
         $id_barang = $request->input('id_barang');
-
+        $id_game = $request->input('id_game');
 
         $request->session()->put('id_seller',$id_seller);
+        $request->session()->put('id_game',$id_game);
         $request->session()->put('id_barang', $id_barang);
 
         $barang = Barang::find($id_barang);
-
+        $game= Game::find($id_game);
         $pengguna = Pengguna::find($id_seller);
         $admin = Pengguna::where('role', 1)->get();
-        return view('buyconsignment', compact('barang','admin','pengguna'));
+        return view('buyconsignment', compact('barang','admin','pengguna','game'));
     }
     public function buybarang(Request $request){
-        $data = new transaksiConsign;
-        $data->id_barang = $request->idbarang;
-        $data->id_user = $request->iduser;
-        $data->id_seller = $request->idseller;
-        $data->Tanggal_transaksi = Carbon::now();
-        $data->status = '0';
-        $data->nama_admin = $request->id_admin;
+        $promo = Promo::where('Nama_promo', $request->promo)->first();
+        if(!$promo && $request->promo != '') {
+            return redirect('/consignment')->withErrors(['error' => 'Invalid kode promo']);
+        }else if ($request->promo == ''){
+            $data = new transaksiConsign;
+            $data->id_barang = $request->idbarang;
+            $data->id_user = $request->iduser;
+            $data->id_seller = $request->idseller;
+            $data->Tanggal_transaksi = Carbon::now();
+            $data->status = '0';
+            $data->nama_admin = $request->id_admin;
+            $data->harga = $request->harga;
+            $data->kode_promo = $request->promo;
+            $data->subtotal = $request->harga;
+        }else{
+            $harga = $request->harga;
+            $nilai_promo = $promo->Nilai_promo;
+            $Subtotal = $harga - $nilai_promo;
+            $data = new transaksiConsign;
+            $data->id_barang = $request->idbarang;
+            $data->id_user = $request->iduser;
+            $data->id_seller = $request->idseller;
+            $data->Tanggal_transaksi = Carbon::now();
+            $data->status = '0';
+            $data->nama_admin = $request->id_admin;
+            $data->harga = $request->harga;
+            $data->kode_promo = $request->promo;
+            $data->subtotal = $Subtotal;
+        }
+
 
         $data->save();
         return redirect('/consignment');

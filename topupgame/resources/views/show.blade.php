@@ -67,6 +67,41 @@
                         <input type="file" name="image" class="form-control">
                     </div>
                 </div>
+                <div class="col mb-3">
+                    <label class="form-label"><strong>Current Image 2</strong></label>
+                    <div>
+                        <img src="{{ asset('uploads/barang/' . $product->image2) }}" alt="" width="100px" height="100px">
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label"><strong>Current Image 3</strong></label>
+                    <div>
+                        <img src="{{ asset('uploads/barang/' . $product->image3) }}" alt="" width="100px" height="100px">
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label"><strong>Current Image 4</strong></label>
+                    <div>
+                        <img src="{{ asset('uploads/barang/' . $product->image4) }}" alt="" width="100px" height="100px">
+                    </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>New Image</strong></label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>New Image 2</strong></label>
+                        <input type="file" name="image2" class="form-control">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>New Image 3</strong></label>
+                        <input type="file" name="image3" class="form-control">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>New Image 4</strong></label>
+                        <input type="file" name="image4" class="form-control">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="d-grid col-md-2 mx-auto">
                         <button class="btn btn-primary" type="submit"><strong>Update</strong></button>
