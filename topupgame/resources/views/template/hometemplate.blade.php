@@ -127,9 +127,6 @@
       color: #000;
     }
 
-    .footer-social .fa{
-      margin-top: 7px;
-    }
 </style>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -157,20 +154,31 @@
               <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="#contact">Contact</a>
               </li>
+              <li>
+                @if(Session::has('user'))
+                      <span class="navbar-text text-white me-2">
+                          <h6>Welcome, {{ Session::get('user') }}!</h6>
+                      </span>
+                      <li>
+                        <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a> 
+                      </li>
+                      <li>
+                        <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a> 
+                      </li>
+                      <li>
+                        <a class="btn btn-success text-uppercase text-white" href="/userconsign">Transaksi Consign</a>
+                      </li>
+                      <li>
+                        <a class="btn btn-success text-uppercase text-white" href="/sellerconsign">Seller Consign</a>
+                      </li>
+                  @else
+                      <li>
+                        <a class="btn btn-warning text-uppercase text-white" href="/signup">Sign Up</a>
+                      </li>
+                  @endif
+              </li>
             </ul>
           </div>
-          
-          @if(Session::has('user'))
-                <span class="navbar-text text-white me-2">
-                    Welcome, {{ Session::get('user') }}!
-                </span>
-                <a class="btn btn-danger text-uppercase text-white" href="/logout">Logout</a> &nbsp;
-                <a class="btn btn-success text-uppercase text-white" href="/cruduser">ADD Barang</a> &nbsp;
-                <a class="btn btn-success text-uppercase text-white" href="/userconsign">Transaksi Consign</a>
-                <a class="btn btn-success text-uppercase text-white" href="/sellerconsign">Seller Consign</a>
-            @else
-                <a class="btn btn-warning text-uppercase text-white" href="/signup">Sign Up</a>
-            @endif
         </div>
     </nav>
 
@@ -191,7 +199,6 @@
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn-warning text-uppercase text-white fs-5">read more</button>
               </div>
             </div>
             <div class="carousel-item">
@@ -234,7 +241,6 @@
         <div class="col-md-3 mb-5">
           <h2>About Us</h2>
           <p>Itemcons is a game marketplace where players can buy, sell, and trade in-game items and currencies. It offers a wide range of products for various popular games, providing a secure and convenient platform for gamers to enhance their gaming experience.</p>
-          <p><a href="">Click here to learn more</a></p>
         </div>
 
         <div class="col-md-3 mb-5" id="contact">
