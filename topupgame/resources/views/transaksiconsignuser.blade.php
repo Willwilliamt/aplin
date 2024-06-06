@@ -102,6 +102,9 @@
 <body>
     <main class="table p-3" id="customers_table">
         <section class="table__header">
+            <form action="/consignment" method="get">
+                <button type="submit" class="btn1">Back</button>
+            </form>
             <button id="pendingBtn" class="btn1">Menunggu Konfirmasi</button>
             <button id="prosesBtn" class="btn1">Dalam Proses</button>
             <button id="selesaiBtn" class="btn1">Selesai</button>
@@ -132,7 +135,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <table id="ProsesTable" class="hidden">
+            <table id="prosesTable" class="hidden">
                 <thead>
                     <tr>
                         <th>Barang</th>
@@ -156,7 +159,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <table id="selesaiTabel" class="hidden">
+            <table id="selesaiTable" class="hidden">
                 <thead>
                     <tr>
                         <th>Barang</th>
@@ -182,86 +185,24 @@
             </table>
         </section>
     </main>
-    {{-- <table id="pendingTable">
-        <tr>
-            <th>Barang</th>
-            <th>Pembeli</th>
-            <th>Penjual</th>
-            <th>Tanggal</th>
-            <th>Status</th>
-        </tr>
-        @foreach ($trans as $item)
-        @if ($item->status == 0)
-        <tr>
-            <td>{{ $item->Nama_barang }}</td>
-            <td>{{ $item->pembeli }}</td>
-            <td>{{ $item->penjual }}</td>
-            <td>{{ $item->Tanggal_transaksi }}</td>
-            <td>Menunggu Confirm Admin</td>
-        </tr>
-        @endif
-        @endforeach
-    </table>
-
-    <table id="prosesTable" class="hidden" border="1px solid black">
-        <tr>
-            <th>Barang</th>
-            <th>Pembeli</th>
-            <th>Penjual</th>
-            <th>Tanggal</th>
-            <th>Status</th>
-        </tr>
-        @foreach ($trans as $item)
-        @if ($item->status == 1)
-        <tr>
-            <td>{{ $item->Nama_barang }}</td>
-            <td>{{ $item->pembeli }}</td>
-            <td>{{ $item->penjual }}</td>
-            <td>{{ $item->Tanggal_transaksi }}</td>
-            <td>Dalam Proses</td>
-        </tr>
-        @endif
-        @endforeach
-    </table>
-
-    <table id="selesaiTabel" class="hidden" border="1px solid black">
-        <tr>
-            <th>Barang</th>
-            <th>Pembeli</th>
-            <th>Penjual</th>
-            <th>Tanggal</th>
-            <th>Status</th>
-        </tr>
-        @foreach ($trans as $item)
-        @if ($item->status == 3)
-        <tr>
-            <td>{{ $item->Nama_barang }}</td>
-            <td>{{ $item->pembeli }}</td>
-            <td>{{ $item->penjual }}</td>
-            <td>{{ $item->Tanggal_transaksi }}</td>
-            <td>Selesai</td>
-        </tr>
-        @endif
-        @endforeach
-    </table> --}}
 
     <script>
         document.getElementById('pendingBtn').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.remove('hidden');
             document.getElementById('prosesTable').classList.add('hidden');
-            document.getElementById('selesaiTabel').classList.add('hidden');
+            document.getElementById('selesaiTable').classList.add('hidden');
         });
 
         document.getElementById('prosesBtn').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.add('hidden');
             document.getElementById('prosesTable').classList.remove('hidden');
-            document.getElementById('selesaiTabel').classList.add('hidden');
+            document.getElementById('selesaiTable').classList.add('hidden');
         });
 
         document.getElementById('selesaiBtn').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.add('hidden');
             document.getElementById('prosesTable').classList.add('hidden');
-            document.getElementById('selesaiTabel').classList.remove('hidden');
+            document.getElementById('selesaiTable').classList.remove('hidden');
         });
     </script>
 </body>

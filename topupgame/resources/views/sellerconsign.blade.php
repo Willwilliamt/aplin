@@ -102,6 +102,9 @@
 <body>
     <main class="table p-3" id="customers_table">
         <section class="table__header">
+            <form action="/consignment" method="get">
+                <button type="submit" class="btn1">Back</button>
+            </form>
             <button id="pendingButton" class="btn1">Menunggu Konfirmasi</button>
             <button id="prosesBtn" class="btn1">Dalam Proses</button>
             <button id="selesaiBtn" class="btn1">Selesai</button>
@@ -153,7 +156,7 @@
                         <td>{{ $item->Tanggal_transaksi }}</td>
                         <td>Dalam Proses</td>
                         <td>
-                            <form action="" method="post">
+                            <form action="{{ route('berikanBuyer', $item->id_consign) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Berikan Item Ke Buyer</button>
                             </form>
@@ -163,6 +166,7 @@
                     @endforeach
                 </tbody>
             </table>
+
             <table id="selesaiTabel" class="hidden">
                 <thead>
                     <tr>
@@ -195,18 +199,19 @@
             document.getElementById('prosesTabel').classList.add('hidden');
             document.getElementById('selesaiTabel').classList.add('hidden');
         });
-
+    
         document.getElementById('prosesBtn').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.add('hidden');
             document.getElementById('prosesTabel').classList.remove('hidden');
             document.getElementById('selesaiTabel').classList.add('hidden');
         });
-
+    
         document.getElementById('selesaiBtn').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.add('hidden');
             document.getElementById('prosesTabel').classList.add('hidden');
             document.getElementById('selesaiTabel').classList.remove('hidden');
         });
     </script>
+    
 </body>
 </html>
