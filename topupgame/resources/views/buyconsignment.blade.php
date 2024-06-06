@@ -4,7 +4,7 @@
 <style>
     .container.box {
         padding: 20px;
-        background: rgb(200, 227, 253);
+        background: rgb(226, 235, 243);
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -59,6 +59,9 @@
     .btn-success:hover {
         background-color: #218838;
         border-color: #1e7e34;
+    }
+    footer{
+        height: 40vh;
     }
 </style>
 <br>

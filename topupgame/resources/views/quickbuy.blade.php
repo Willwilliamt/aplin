@@ -1,7 +1,14 @@
 @extends('template.buyconsigntemplate')
 @section('consign')
-
-<div class="container box mt-5 p-5 border p-3">
+<style>
+    .box{
+        border: 1px solid black;
+    }
+    footer{
+        height: 40vh;
+    }
+</style>
+<div class="container box mt-4 p-5 border p-3">
     <a href="{{ url('/') }}" class="btn btn-primary mb-3">Back to Home</a>
     <div class="row">
         <div class="col-md-5 text-center">
@@ -49,7 +56,7 @@
         </div>
     </div>
 </div>
-
+<br><br>
 <script>
 document.getElementById('pay-button').onclick = function() {
     let zoneId = document.getElementById('zoneId').value.trim();
