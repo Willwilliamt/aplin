@@ -29,6 +29,7 @@ Route::get('/', [KategoriController::class, 'home'])->name('homepage');
 Route::get('/login', function () {
     return view('login');
 });
+
 Route::post('/purchase/{id_game}', 'PaymentController@purchase');
 Route::post('/quickbuy/{id_game}', [PaymentController::class, 'purchase'])->name('quickbuy.purchase');
 Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);

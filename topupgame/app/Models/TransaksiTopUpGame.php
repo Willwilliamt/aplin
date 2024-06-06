@@ -9,7 +9,8 @@ class TransaksiTopUpGame extends Model
     use HasFactory;
 
     protected $table = 'transaksi_top_up_game';
-    
+    protected $primaryKey = 'id_transaksi_topup';
+
     protected $fillable = [
         'id_user', 
         'game_name', 
