@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         @foreach ($barang as $index)
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <div class="card" style="width: 100%;">
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="card w-100" style="max-width: 18rem;">
                     <img src="{{ asset('uploads/barang/' . $index->image) }}" class="card-img-top" alt="..." style="width: 100%; height: 150px;">
                     <div class="card-body">
                         <h3 class="card-title">{{ $index->Nama_barang }}</h3>
@@ -21,5 +21,6 @@
         @endforeach
     </div>
 </div>
+
 
 
