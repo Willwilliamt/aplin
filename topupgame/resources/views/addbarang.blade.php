@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Barang</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        body {
-            background: url(simplegaming.jpg) center / cover;
-            height: 100vh;
-            margin: 0;
-        }
-        .box {
-            background-color: #fff5;
-            backdrop-filter: blur(7px);
-            padding: 2rem;
-            border-radius: 10px;
-        }
+@extends('template.buyconsigntemplate')
+@section('consign')
+<style>       
         .form-group {
             position: relative;
             margin-bottom: 1.5rem;
@@ -45,12 +27,17 @@
             font-size: 0.75rem;
             color: #495057;
         }
+        footer{
+            height: 40vh;
+        }
+        .box{
+            background: #c3d8e4;
+            border: 1px solid black;
+        }
     </style>
-</head>
-<body>
-    <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
+    <div class="d-flex justify-content-center " style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container w-50 p-5 box">
-            <h1 class="mb-0 text-center text-white">Add Product</h1>
+            <h1 class="mb-0 text-center">Add Product</h1>
             <span class="navbar-text text-black me-2">
                 <p><strong>Welcome, {{ Session::get('user') }}!</strong></p>
             </span>
@@ -112,5 +99,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+@endsection

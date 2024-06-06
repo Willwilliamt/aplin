@@ -233,7 +233,6 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-warning text-uppercase text-white fs-5">read more</button>
               </div>
             </div>
             

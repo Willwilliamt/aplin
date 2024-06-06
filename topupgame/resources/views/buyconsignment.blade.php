@@ -4,7 +4,7 @@
 <style>
     .container.box {
         padding: 20px;
-        background: rgb(255, 255, 255);
+        background: rgb(200, 227, 253);
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -61,7 +61,7 @@
         border-color: #1e7e34;
     }
 </style>
-
+<br>
 <div class="container box">
     <h1 class="text-center">Detail Barang</h1>
     <a href="/consignment" class="btn btn-secondary mb-3" type="button"><strong>Back</strong></a>
@@ -106,7 +106,7 @@
         </div>
     </div>
 </div>
-
+<br>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const thumbnails = document.querySelectorAll('.thumb');

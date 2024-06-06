@@ -1,198 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Seller Consignment</title>
-    <style>
-        .hidden {
-            display: none;
-        }
+@extends('template.buyconsigntemplate')
+@section('consign')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<title>Seller Consignment</title>
+<style>
+    .hidden {
+        display: none;
+    }
+    .container {
+        flex: 1 0 auto;
+    }
 
-        @media print {
-            .table, .table__body {
-                overflow: visible;
-                height: auto !important;
-                width: auto !important;
-            }
-        }
-
-        body {
-            min-height: 100vh;
-            background: url(html_table.jpg) center / cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        main.table {
-            width: 82vw;
-            height: 90vh;
-            background-color: #fff5;
-            backdrop-filter: blur(7px);
-            box-shadow: 0 .4rem .8rem #0005;
-            border-radius: .8rem;
-            overflow: hidden;
-        }
-
-        .table__body {
-            width: 95%;
-            max-height: calc(89% - 1.6rem);
-            background-color: #fffb;
-            margin: .8rem auto;
-            border-radius: .6rem;
-            overflow: auto;
-            overflow: overlay;
-        }
-
-        .table__body::-webkit-scrollbar {
-            width: 0.5rem;
-            height: 0.5rem;
-        }
-
-        .table__body::-webkit-scrollbar-thumb {
-            border-radius: .5rem;
-            background-color: #0004;
-            visibility: hidden;
-        }
-
-        .table__body:hover::-webkit-scrollbar-thumb { 
-            visibility: visible;
-        }
-
-        table {
-            width: 100%;
-        }
-
-        table, th, td {
-            border-collapse: collapse;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        thead th {
-            position: sticky;
-            top: 0;
-            left: 0;
-            background-color: #d5d1defe;
-            cursor: pointer;
-            text-transform: capitalize;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #0000000b;
-        }
-
-        tbody tr {
-            --delay: .1s;
-            transition: .5s ease-in-out var(--delay), background-color 0s;
-        }
-
-        tbody tr:hover {
-            background-color: rgba(223, 227, 233, 0.4) !important;
-        }
-
-        .btn1 {
-            background: #C4E4FF;
-        }
-    </style>
-</head>
-<body>
-    <main class="table p-3" id="customers_table">
-        <section class="table__header">
+    footer {
+        flex-shrink: 0;
+        background-color: #f8f9fa;
+        padding: 10px;
+        width: 100%;
+        height: 40vh;
+    }
+    tbody {
+        background-color: #8a8a8a;
+    }
+    .box {
+        background: #e8f0f5;
+        border: 0.5px solid black;
+        border-radius: 10px;
+    }
+</style>
+<br>
+    <div class="container box p-5">
+        <h1 class="text-center">Seller's Consignment</h1>
+        <main class="table p-3" id="customers_table">
             <form action="/consignment" method="get">
-                <button type="submit" class="btn1">Back</button>
+                <a href="/" class="btn btn-primary btn-sm">Back</a>
             </form>
-            <button id="pendingButton" class="btn1">Menunggu Konfirmasi</button>
-            <button id="prosesBtn" class="btn1">Dalam Proses</button>
-            <button id="selesaiBtn" class="btn1">Selesai</button>
-            <h1 class="text-center">Seller's Consignment</h1>
-        </section>
-        <section class="table__body">
-            <table id="pendingTable">
-                <thead>
-                    <tr>
-                        <th>Barang</th>
-                        <th>Pembeli</th>
-                        <th>Penjual</th>
-                        <th>Tanggal</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trans as $item)
-                    @if ($item->status == 0)
-                    <tr>
-                        <td>{{ $item->Nama_barang }}</td>
-                        <td>{{ $item->pembeli }}</td>
-                        <td>{{ $item->penjual }}</td>
-                        <td>{{ $item->Tanggal_transaksi }}</td>
-                        <td>Menunggu Confirm Admin</td>
-                    </tr>
-                    @endif
-                    @endforeach
-                </tbody>
-            </table>
-            <table id="prosesTabel" class="hidden">
-                <thead>
-                    <tr>
-                        <th>Barang</th>
-                        <th>Pembeli</th>
-                        <th>Penjual</th>
-                        <th>Tanggal</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trans as $item)
-                    @if ($item->status == 1)
-                    <tr>
-                        <td>{{ $item->Nama_barang }}</td>
-                        <td>{{ $item->pembeli }}</td>
-                        <td>{{ $item->penjual }}</td>
-                        <td>{{ $item->Tanggal_transaksi }}</td>
-                        <td>Dalam Proses</td>
-                        <td>
-                            <form action="{{ route('berikanBuyer', $item->id_consign) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Berikan Item Ke Buyer</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endif
-                    @endforeach
-                </tbody>
-            </table>
-
-            <table id="selesaiTabel" class="hidden">
-                <thead>
-                    <tr>
-                        <th>Barang</th>
-                        <th>Pembeli</th>
-                        <th>Penjual</th>
-                        <th>Tanggal</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trans as $item)
-                    @if ($item->status == 3)
-                    <tr>
-                        <td>{{ $item->Nama_barang }}</td>
-                        <td>{{ $item->pembeli }}</td>
-                        <td>{{ $item->penjual }}</td>
-                        <td>{{ $item->Tanggal_transaksi }}</td>
-                        <td>Selesai</td>
-                    </tr>
-                    @endif
-                    @endforeach
-                </tbody>
-            </table>
-        </section>
-    </main>
+            <br>
+            <section class="table__header">
+                <button id="pendingButton" class="btn btn-primary btn-sm">Menunggu Konfirmasi</button>
+                <button id="prosesBtn" class="btn btn-primary btn-sm">Dalam Proses</button>
+                <button id="selesaiBtn" class="btn btn-primary btn-sm">Selesai</button>
+            </section>
+            <br>
+            <section class="table__body">
+                <table id="pendingTable" class="table table-hover table-bordered"> 
+                    <thead  class="table-primary text-center">
+                        <tr>
+                            <th>Barang</th>
+                            <th>Pembeli</th>
+                            <th>Penjual</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bodyTable text-center">
+                        @foreach ($trans as $item)
+                        @if ($item->status == 0)
+                        <tr>
+                            <td>{{ $item->Nama_barang }}</td>
+                            <td>{{ $item->pembeli }}</td>
+                            <td>{{ $item->penjual }}</td>
+                            <td>{{ $item->Tanggal_transaksi }}</td>
+                            <td>Menunggu Confirm Admin</td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+                <table id="prosesTabel" class="hidden table table-hover table-bordered">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>Barang</th>
+                            <th>Pembeli</th>
+                            <th>Penjual</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bodyTable text-center">
+                        @foreach ($trans as $item)
+                        @if ($item->status == 1)
+                        <tr>
+                            <td>{{ $item->Nama_barang }}</td>
+                            <td>{{ $item->pembeli }}</td>
+                            <td>{{ $item->penjual }}</td>
+                            <td>{{ $item->Tanggal_transaksi }}</td>
+                            <td>Dalam Proses</td>
+                            <td>
+                                <form action="{{ route('berikanBuyer', $item->id_consign) }}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Berikan Item Ke Buyer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+    
+                <table id="selesaiTabel" class="hidden table table-hover table-bordered">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>Barang</th>
+                            <th>Pembeli</th>
+                            <th>Penjual</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bodyTable text-center">
+                        @foreach ($trans as $item)
+                        @if ($item->status == 3)
+                        <tr>
+                            <td>{{ $item->Nama_barang }}</td>
+                            <td>{{ $item->pembeli }}</td>
+                            <td>{{ $item->penjual }}</td>
+                            <td>{{ $item->Tanggal_transaksi }}</td>
+                            <td>Selesai</td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
     <script>
         document.getElementById('pendingButton').addEventListener('click', function() {
             document.getElementById('pendingTable').classList.remove('hidden');
@@ -212,6 +143,5 @@
             document.getElementById('selesaiTabel').classList.remove('hidden');
         });
     </script>
-    
-</body>
-</html>
+    <footer></footer>
+@endsection
