@@ -7,7 +7,11 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ $g->name }}</h5>
                         <p class="card-text">{{ $g->description }}</p>
+                        @if (session()->has('user'))
                         <a href="{{ route('quickbuy', $g->id_game) }}" class="btn btn-primary">Quick Buy</a>
+                        @else
+                        <p class="text-danger">Please log in to buy this item.</p>
+                        @endif
                     </div>
                 </div>
             </div>

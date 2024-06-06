@@ -46,7 +46,12 @@ class TransaksiController extends Controller
         ->select('transaksi_influencer.*', 'Influencer.Nama_influencer')
         ->get();
 
+        $trans3 = DB::table('transaksi_top_up_game')
+        ->join('users', 'transaksi_top_up_game.id_user', '=', 'users.Id_user')
+        ->select('transaksi_top_up_game.*', 'users.name as pembeli')
+        ->get();
 
-        return view('viewadmin', compact('trans'), compact('trans2'));
+
+        return view('viewadmin', compact('trans', 'trans2', 'trans3'));
     }
 }

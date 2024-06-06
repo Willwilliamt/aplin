@@ -62,13 +62,21 @@
         <table id="prosesTabel"  class="status-table hidden table table-bordered bag">
             <thead class="table-primary">
                 <tr class="text-center">
-                    <th>Barang</th>
-                    <th>Pembeli</th>
-                    <th>Penjual</th>
+                    <th>Nama User</th>
+                    <th>Game</th>
+                    <th>Jumlah</th>
                     <th>Tanggal</th>
-                    <th>Status</th>
+                    
                 </tr>
             </thead>
+            @foreach ($trans3 as $item)
+            <tr>
+                <td>{{ $item->pembeli }}</td>
+                <td>{{ $item->game_name }}</td>
+                <td>{{ $item->jumlah_topup }}</td>
+                <td>{{ $item->Tanggal_transaksi }}</td>
+            </tr>
+            @endforeach
         </table>
 
 

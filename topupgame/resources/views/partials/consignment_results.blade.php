@@ -8,6 +8,7 @@
                         <h3 class="card-title">{{ $index->Nama_barang }}</h3>
                         <h5 class="card-title">Rp {{ $index->Harga_barang }}</h5>
                         <p class="card-text">{{ $index->deskripsi }}</p>
+                        @if (session()->has('user'))
                         <form action="/buyconsignment" method="POST">
                             @csrf
                             <input type="hidden" name="id_barang" value="{{ $index->Id_barang }}">
@@ -15,12 +16,12 @@
                             <input type="hidden" name="id_game" value="{{ $index->id_game }}">
                             <button type="submit" class="btn btn-secondary">BUY</button>
                         </form>
+                        @else
+                        <p class="text-danger">Please log in to buy this item.</p>
+                        @endif
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
 </div>
-
-
-
