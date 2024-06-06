@@ -9,54 +9,53 @@ use Midtrans\Snap;
 class PaymentController extends Controller
 {
     public function getSnapToken(Request $request)
-{
-    // Set your Merchant Server Key
-    Config::$serverKey = 'SB-Mid-server-84hdmckw7ImB5-ZLX0YS-1aj';
-    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-    Config::$isProduction = false;
-    // Set sanitization on (default)
-    Config::$isSanitized = true;
-    // Set 3DS transaction for credit card to true
-    Config::$is3ds = true;
+    {
+        // Set your Merchant Server Key
 
-    $orderId = uniqid();
-    $grossAmount = $request->product_price * $request->quantity; // Calculate the total amount based on the product price and quantity
+        
+        Config::$serverKey = 'SB-Mid-server-84hdmckw7ImB5-ZLX0YS-1aj';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        Config::$isProduction = false;
+        // Set sanitization on (default)
+        Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        Config::$is3ds = true;
 
-    $transactionDetails = [
-        'order_id' => $orderId,
-        'gross_amount' => $grossAmount,
-    ];
+        $orderId = uniqid();
+        $grossAmount = $request->product_price * $request->quantity; // Calculate the total amount based on the product price and quantity
 
-    $itemDetails = [
-        [
-            'id' => $request->product_id,
-            'price' => $request->product_price,
-            'quantity' => $request->quantity,
-            'name' => 'Product Name', // Example: get product name from DB
-        ],
-    ];
+        $transactionDetails = [
+            'order_id' => $orderId,
+            'gross_amount' => $grossAmount,
+        ];
 
-    $customerDetails = [
-        'first_name' => 'Customer', // Example: get customer details from request or DB
-        'last_name' => 'Name',
-        'email' => 'customer@example.com',
-        'phone' => '081234567890',
-    ];
+        $itemDetails = [
+            [
+                'id' => $request->product_id,
+                'price' => $request->product_price,
+                'quantity' => $request->quantity,
+                'name' => 'Product Name', // Example: get product name from DB
+            ],
+        ];
 
-    $transaction = [
-        'transaction_details' => $transactionDetails,
-        'customer_details' => $customerDetails,
-        'item_details' => $itemDetails,
-    ];
+        $customerDetails = [
+            'first_name' => 'Customer', // Example: get customer details from request or DB
+            'last_name' => 'Name',
+            'email' => 'customer@example.com',
+            'phone' => '081234567890',
+        ];
 
-    try {
-        $snapToken = Snap::getSnapToken($transaction);
-        return response()->json(['token' => $snapToken]);
-    } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()]);
+        $transaction = [
+            'transaction_details' => $transactionDetails,
+            'customer_details' => $customerDetails,
+            'item_details' => $itemDetails,
+        ];
+
+        try {
+            $snapToken = Snap::getSnapToken($transaction);
+            return response()->json(['token' => $snapToken]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
-}
-
-
-   
 }
