@@ -55,7 +55,7 @@
             visibility: hidden;
         }
 
-        .table__body:hover::-webkit-scrollbar-thumb { 
+        .table__body:hover::-webkit-scrollbar-thumb {
             visibility: visible;
         }
 
@@ -117,7 +117,6 @@
             <table class="table table-hover">
                 <thead class="table-primary text-center">
                     <tr>
-                        <th>ID</th>
                         <th>Nama Barang</th>
                         <th>Harga Barang</th>
                         <th>Kategori</th>
@@ -128,8 +127,7 @@
                 </thead>
                 <tbody class="bodyTable text-center">
                     @foreach ($barangs as $barang)
-                        <tr>                
-                            <td class="align-middle">{{ $barang->Id_barang }}</td>
+                        <tr>
                             <td class="align-middle">{{ $barang->Nama_barang }}</td>
                             <td class="align-middle">{{ $barang->Harga_barang }}</td>
                             <td class="align-middle">{{ $barang->kategori->nama_kategori}}</td>
@@ -143,7 +141,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger m-0">Delete</button>
                                     </form>
-                                    
+
                                 </div>
                             </td>
                         </tr>
