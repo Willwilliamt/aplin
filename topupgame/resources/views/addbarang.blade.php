@@ -52,13 +52,17 @@
         <div class="container w-50 p-5 box">
             <h1 class="mb-0 text-center text-white">Add Product</h1>
             <span class="navbar-text text-black me-2">
-                <p><strong>Welcome, {{ Session::get('user') }}!</strong></p> 
+                <p><strong>Welcome, {{ Session::get('user') }}!</strong></p>
             </span>
             <form action="user/insert" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="text" name="nama" class="form-control" placeholder=" " required>
                     <label for="nama">Nama Barang</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="deskripsi" class="form-control" placeholder=" " required>
+                    <label for="nama">Deskripsi</label>
                 </div>
                 <div class="form-group">
                     <input type="number" name="harga" class="form-control" placeholder=" " required>
@@ -72,8 +76,33 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <select name="game" class="form-control">
+                        @foreach($game as $games)
+                            <option value="{{ $games->id_game }}">{{ $games->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input">
+                        <label for="" class="custom-file-label">Choose File</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" name="image2" class="custom-file-input">
+                        <label for="" class="custom-file-label">Choose File</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" name="image3" class="custom-file-input">
+                        <label for="" class="custom-file-label">Choose File</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" name="image4" class="custom-file-input">
                         <label for="" class="custom-file-label">Choose File</label>
                     </div>
                 </div>
@@ -81,7 +110,7 @@
                     <button type="submit" class="btn btn-primary"><strong>Submit</strong></button>
                 </div>
             </form>
-        </div>  
+        </div>
     </div>
 </body>
 </html>

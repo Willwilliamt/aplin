@@ -9,6 +9,7 @@
                 @csrf
                 <input type="hidden" name="id_barang" value="{{ $index->Id_barang }}">
                 <input type="hidden" name="id_seller" value="{{ $index->id_user }}">
+                <input type="hidden" name="id_game" value="{{ $index->id_game }}">
                 <button type="submit" class="btn btn-secondary">BUY</button>
             </form>
         </div>
