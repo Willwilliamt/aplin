@@ -103,18 +103,44 @@ class BarangController extends Controller
             $file->move('uploads/barang/', $filename);
             $product->image = $filename;
         }
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image2')) {
 
-            $oldImage = public_path('uploads/barang/' . $product->image);
+            $oldImage = public_path('uploads/barang/' . $product->image2);
             if (file_exists($oldImage)) {
                 @unlink($oldImage);
             }
 
-            $file = $request->file('image');
+            $file = $request->file('image2');
             $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
+            $filename = time() . '_2.' . $extension;
             $file->move('uploads/barang/', $filename);
-            $product->image = $filename;
+            $product->image2 = $filename;
+        }
+        if ($request->hasFile('image3')) {
+
+            $oldImage = public_path('uploads/barang/' . $product->image3);
+            if (file_exists($oldImage)) {
+                @unlink($oldImage);
+            }
+
+            $file = $request->file('image3');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '_3.' . $extension;
+            $file->move('uploads/barang/', $filename);
+            $product->image3 = $filename;
+        }
+        if ($request->hasFile('image4')) {
+
+            $oldImage = public_path('uploads/barang/' . $product->image4);
+            if (file_exists($oldImage)) {
+                @unlink($oldImage);
+            }
+
+            $file = $request->file('image4');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '_4.' . $extension;
+            $file->move('uploads/barang/', $filename);
+            $product->image4 = $filename;
         }
 
         $product->save();
