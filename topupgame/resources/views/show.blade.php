@@ -26,18 +26,23 @@
         <div class="container p-5 box">
             <h1 class="text-center text-white">Update Product</h1>
             <hr />
+            <a href="/consignment" class="btn btn-secondary mb-3" type="button"><strong>Back</strong></a>
             <form action="{{ route('products.update', $product->Id_barang) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
                     <div class="col mb-3">
-                        <label class="form-label"><strong>ID</strong></label>
-                        <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->Id_barang }}" readonly>
+                        {{-- <label class="form-label"><strong>ID</strong></label> --}}
+                        <input type="hidden" name="title" class="form-control" placeholder="Title" value="{{ $product->Id_barang }}" readonly>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col mb-3">
                         <label class="form-label"><strong>Nama</strong></label>
                         <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $product->Nama_barang }}">
                     </div>
+                </div>
+                <div class="row">
                     <div class="col mb-3">
                         <label class="form-label"><strong>Deskripsi</strong></label>
                         <input type="text" name="deskripsi" class="form-control" placeholder="Nama" value="{{ $product->deskripsi }}">
@@ -48,6 +53,8 @@
                         <label class="form-label"><strong>Harga</strong></label>
                         <input type="text" name="harga" class="form-control" placeholder="Harga" value="{{ $product->Harga_barang }}">
                     </div>
+                </div>
+                <div class="row">
                     <div class="col mb-3">
                         <label for="" class="form-label"><strong>Kategori</strong></label>
                         <select name="kategori" class="form-control">
@@ -56,46 +63,50 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col mb-3">
-                        <label class="form-label"><strong>Current Image</strong></label>
+                        <label class="form-label"><strong>Current Image 1</strong></label>
                         <div>
                             <img src="{{ asset('uploads/barang/' . $product->image) }}" alt="" width="100px" height="100px">
                         </div>
                     </div>
+
                     <div class="col mb-3">
-                        <label class="form-label"><strong>New Image</strong></label>
+                        <label class="form-label"><strong>New Image 1</strong></label>
                         <input type="file" name="image" class="form-control">
                     </div>
                 </div>
-                <div class="col mb-3">
-                    <label class="form-label"><strong>Current Image 2</strong></label>
-                    <div>
-                        <img src="{{ asset('uploads/barang/' . $product->image2) }}" alt="" width="100px" height="100px">
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label class="form-label"><strong>Current Image 3</strong></label>
-                    <div>
-                        <img src="{{ asset('uploads/barang/' . $product->image3) }}" alt="" width="100px" height="100px">
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label class="form-label"><strong>Current Image 4</strong></label>
-                    <div>
-                        <img src="{{ asset('uploads/barang/' . $product->image4) }}" alt="" width="100px" height="100px">
-                    </div>
-                    </div>
+                <div class="row">
                     <div class="col mb-3">
-                        <label class="form-label"><strong>New Image</strong></label>
-                        <input type="file" name="image" class="form-control">
+                        <label class="form-label"><strong>Current Image 2</strong></label>
+                        <div>
+                            <img src="{{ asset('uploads/barang/' . $product->image2) }}" alt="" width="100px" height="100px">
+                        </div>
                     </div>
                     <div class="col mb-3">
                         <label class="form-label"><strong>New Image 2</strong></label>
                         <input type="file" name="image2" class="form-control">
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>Current Image 3</strong></label>
+                        <div>
+                            <img src="{{ asset('uploads/barang/' . $product->image3) }}" alt="" width="100px" height="100px">
+                        </div>
+                    </div>
                     <div class="col mb-3">
                         <label class="form-label"><strong>New Image 3</strong></label>
                         <input type="file" name="image3" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label"><strong>Current Image 4</strong></label>
+                        <div>
+                            <img src="{{ asset('uploads/barang/' . $product->image4) }}" alt="" width="100px" height="100px">
+                        </div>
                     </div>
                     <div class="col mb-3">
                         <label class="form-label"><strong>New Image 4</strong></label>
@@ -112,3 +123,4 @@
     </div>
 </body>
 </html>
+
