@@ -518,7 +518,7 @@
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Kategori</span>
+                        <span class="title">Add Game</span>
                     </a>
                 </li>              
                 <li>

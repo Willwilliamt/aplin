@@ -37,7 +37,7 @@
                 <th>Action</th>
             </tr>
             @foreach ($trans as $item)
-            @if ($item->status == 0)
+            @if ($item->status == 0 && $item->nama_admin == session("user"))
             <tr>
                 <td>{{ $item->id_consign }}</td>
                 <td>{{ $item->Nama_barang }}</td>
@@ -57,8 +57,7 @@
                     </form>
                 </td>
             </tr>
-            @endif
-        
+            @endif      
     @endforeach
         </table>
 

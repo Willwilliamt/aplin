@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <style>
-    * {
-        color: white;
+    .bag{
+        background-color: #fff5;
+        backdrop-filter: blur(7px);
     }
     .hidden {
         display: none;
@@ -17,26 +18,26 @@
 <body>
     @extends('template.content')
     @section('viewadmin')
+    <h1 class="mb-0 text-white text-center mt-3">Transaksi</h1><br><br>
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-            <h1 class="mb-0 text-white">Transaksi</h1><br><br>
-            <button id="pending1" style="color: black">Transaksi Consign</button>
-            <button id="prosesBtn" style="color: black">Transaksi Top up</button>
-            <button id="pending2" style="color: black">Transaksi Influencer</button>
+        <div class="d-flex align-items-center justify-content-center">
+            <button class="btn btn-primary text-white mx-2" id="pending1">Transaksi Consign</button>
+            <button class="btn btn-primary text-white mx-2" id="prosesBtn">Transaksi Top up</button>
+            <button class="btn btn-primary text-white mx-2" id="pending2">Transaksi Influencer</button>
         </div>
         <hr />
-        <table id="pendingTabel" class="status-table" border="1px solid black">
-            <tr>
-                <th>Id Trans</th>
-                <th>Barang</th>
-                <th>Pembeli</th>
-                <th>Penjual</th>
-                <th>Tanggal</th>
-                <th>Status</th>
-            </tr>
+        <table id="pendingTabel" class="table table-bordered bag status-table">
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>Barang</th>
+                    <th>Pembeli</th>
+                    <th>Penjual</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
             @foreach ($trans as $item)
-            <tr>
-                <td>{{ $item->id_consign }}</td>
+            <tr class="text-white">
                 <td>{{ $item->Nama_barang }}</td>
                 <td>{{ $item->pembeli }}</td>
                 <td>{{ $item->penjual }}</td>
@@ -55,32 +56,34 @@
             </tr>
             @endforeach
         </table>
+        
 
-        {{-- Transaksi Top up --}}
-        <table id="prosesTabel"  class="status-table hidden" border="1px solid black">
-            <tr>
-                <th>Id Trans</th>
-                <th>Barang</th>
-                <th>Pembeli</th>
-                <th>Penjual</th>
-                <th>Tanggal</th>
-                <th>Status</th>
-            </tr>
+
+        <table id="prosesTabel"  class="status-table hidden table table-bordered bag">
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>Barang</th>
+                    <th>Pembeli</th>
+                    <th>Penjual</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
         </table>
 
-        {{-- Transaksi Influencer --}}
-        <table id="pending2Tabel" style="color: white"  class="status-table hidden" border="1px solid black">
-            <tr>
-                <th>Id Trans</th>
-                <th>Nama Infuencer</th>
-                <th>Waktu Kontrak</th>
-                <th>Tanggal</th>
-                <th>Kode Promo</th>
-                <th>Jumlah Promo</th>
-            </tr>
+
+        <table id="pending2Tabel" style="color: white"  class="status-table hidden table table-bordered bag">
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>Nama Infuencer</th>
+                    <th>Waktu Kontrak</th>
+                    <th>Tanggal</th>
+                    <th>Kode Promo</th>
+                    <th>Jumlah Promo</th>
+                </tr>
+            </thead>
             @foreach ($trans2 as $item)
             <tr>
-                <td>{{ $item->id_transaksi }}</td>
                 <td>{{ $item->Nama_influencer }}</td>
                 <td>{{ $item->waktu }}</td>
                 <td>{{ $item->tanggal }}</td>

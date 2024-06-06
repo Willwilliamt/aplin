@@ -126,7 +126,25 @@
       border-color: #fff;
       color: #000;
     }
+    .navbar-nav {
+        display: flex;
+        align-items: center; 
+        justify-content: space-between; 
+    }
 
+    .navbar-nav .nav-item {
+        margin-right: 15px; 
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        color: white;
+        transition: color 0.3s; 
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #ffc107; 
+    }
 </style>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -143,7 +161,7 @@
                 <a class="nav-link active fs-5 text-white" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-5 text-white" href="#category">Games</a>
+                <a class="nav-link fs-5 text-white" href="/">Games</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-5 text-white" href="/consignment">Consignment</a>

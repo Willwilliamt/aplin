@@ -6,8 +6,8 @@
                     <ion-icon name="menu-outline" style="color: white;"></ion-icon>
                 </div>
                 <div class="toggle-buttons">
-                    <button id="showUserTable" class="btn">Show User Table</button>
-                    <button id="showAdminTable" class="btn">Show Admin Table</button>
+                    <button id="showUserTable" class="btn btn-primary">Show User Table</button>
+                    <button id="showAdminTable" class="btn btn-primary">Show Admin Table</button>
                 </div>
                 <div class="user">
                     <img src="{{ URL('customer01.jpg') }}" height="30px" width="30px">
@@ -20,7 +20,7 @@
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table>
-                        <tr>
+                        <tr class="text-center">
                             <th>Id User</th>
                             <th>Username</th>
                             <th>Password</th>
@@ -31,7 +31,7 @@
                         </tr>
                         @foreach ($users as $item)
                             @if ($item['Role'] == 0)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $item['Id_user'] }}</td>
                                     <td>{{ $item['Username'] }}</td>
                                     <td><input type="password" value="{{ $item['Password'] }}" id="" readonly style="border: none"> 
@@ -43,7 +43,7 @@
                                         <form action="/superadmin/promote" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $item['Id_user'] }}">
-                                            <button type="submit" class="btn">Promote</button>
+                                            <button type="submit" class="btn btn-primary btn-small">Promote</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -57,7 +57,7 @@
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table border="1">
-                        <tr>
+                        <tr class="text-center">
                             <th>Id Admin</th>
                             <th>Username</th>
                             <th>Name</th>
@@ -66,7 +66,7 @@
                         </tr>
                         @foreach ($users as $admin)
                             @if ($admin['Role'] == 1)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $admin['Id_user'] }}</td>
                                     <td>{{ $admin['Username'] }}</td>
                                     <td>{{ $admin['name'] }}</td>
@@ -75,7 +75,7 @@
                                         <form action="/superadmin/demote" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $admin['Id_user'] }}">
-                                            <button type="submit" class="btn">Demote</button>
+                                            <button type="submit" class="btn btn-primary">Demote</button>
                                         </form>
                                     </td>
                                 </tr>
