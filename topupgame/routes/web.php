@@ -12,6 +12,7 @@ use App\Http\Controllers\QuickBuyController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ConsignmentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::get('/crudproduk',[ProdukController::class,'index']);
 Route::get('/addbarang', [BarangController::class, 'add']);
 Route::get('/securityadmin', [GameController::class, 'index']);
 Route::get('/consignment', [ConsignmentController::class, 'index']);
+Route::get('/transaksi', [TransaksiController::class, 'viewAdmin']);
 
 Route::get('/addkategori', function () {
     return view('addkategori');
