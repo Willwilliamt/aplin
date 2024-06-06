@@ -55,59 +55,61 @@
     </div>
 </div>
 
-<script>
-document.getElementById('pay-button').onclick = function() {
-    let userId = document.getElementById('userId').value.trim();
-    let zoneId = document.getElementById('zoneId').value.trim();
-    let quantity = document.getElementById('quantity').value.trim();
+    <script>
+    document.getElementById('pay-button').onclick = function() {
+        let userId = document.getElementById('userId').value.trim();
+        let zoneId = document.getElementById('zoneId').value.trim();
+        let quantity = document.getElementById('quantity').value.trim();
 
     if (!userId || !zoneId || !quantity) {
         alert("Please fill out all required fields.");
         return;
     }
 
-    const selectedProduct = document.getElementById('product');
-    const selectedOption = selectedProduct.options[selectedProduct.selectedIndex];
-    const price = selectedOption.getAttribute('data-price');
-    const productId = selectedProduct.value;
+        const selectedProduct = document.getElementById('product');
+        const selectedOption = selectedProduct.options[selectedProduct.selectedIndex];
+        const price = selectedOption.getAttribute('data-price');
+        const productId = selectedProduct.value;
 
-    fetch('{{ url('/get-snap-token') }}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({
-            user_id: userId,
-            zone_id: zoneId,
-            note: document.getElementById('note').value,
-            quantity: quantity,
-            product_id: productId,
-            product_price: price,
-            game_id: '{{ $game->id_game }}'
+        fetch('{{ url('/get-snap-token') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                user_id: userId,
+                zone_id: zoneId,
+                note: document.getElementById('note').value,
+                quantity: quantity,
+                product_id: productId,
+                product_price: price,
+                game_id: '{{ $game->id_game }}'
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            snap.pay(data.token, {
-                onSuccess: function(result) {
-                    document.getElementById('snap_token').value = data.token;
-                    document.getElementById('payment-form').submit();
-                },
-                onPending: function(result) {
-                    alert("Payment pending!");
-                },
-                onError: function(result) {
-                    alert("Payment failed!");
-                },
-                onClose: function() {
-                    alert("You closed the popup without finishing the payment");
-                }
-            });
-        }
-    })
-    .catch(error => console.error('Error:', error));
-};
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                snap.pay(data.token, {
+                    onSuccess: function(result) {
+                        document.getElementById('snap_token').value = data.token;
+                        document.getElementById('payment-form').submit();
+                    },
+                    onPending: function(result) {
+                        alert("Payment pending!");
+                    },
+                    onError: function(result) {
+                        alert("Payment failed!");
+                    },
+                    onClose: function() {
+                        alert("You closed the popup without finishing the payment");
+                    }
+                });
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    };
 </script>
-@endsection
+
+</body>
+</html>
