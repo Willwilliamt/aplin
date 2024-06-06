@@ -10,7 +10,7 @@ class PaymentController extends Controller
 {
     public function getSnapToken(Request $request)
     {
-        Config::$serverKey = 'SB-Mid-server-84hdmckw7ImB5-ZLX0YS-1aj';
+        Config::$serverKey = 'SB-Mid-server-f9mEsBzKvNMV8JgDP-UNlvXe';
         Config::$isProduction = false;
         Config::$isSanitized = true;
         Config::$is3ds = true;

@@ -10,11 +10,9 @@
     <div class="toggle">
         <ion-icon name="menu-outline" style="color: white;"></ion-icon>
     </div>
-    <div class="toggle-buttons">
-        <button id="showUserTable" class="btn">Show User Table</button>
-        <button id="showAdminTable" class="btn">Show Admin Table</button>
-    </div>
-    <p style="color: white">Welcome, Security Admin {{session("user")}}</p>
+     <h3 style="color: white">
+        Welcome, Security Admin {{session("user")}}
+     </h3>
     <div class="user">
         <img src="{{ URL('customer01.jpg') }}" height="30px" width="30px">
     </div>
@@ -27,7 +25,6 @@
         </div>
         <table>
             <tr>
-                <th>Id</th>
                 <th>Nama Game</th>
                 <th>Description</th>
                 <th>Nama Kategori</th>
@@ -36,7 +33,6 @@
             </tr>
             @foreach ($games as $item)
                     <tr>
-                        <td>{{ $item['id_game'] }}</td>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['description'] }}</td>
                         <td>{{ $item['nama_kategori'] }}</td>

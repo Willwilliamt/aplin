@@ -1,9 +1,9 @@
 @extends('template.content')
 @section('addproduk')
 
+<h1 class="mb-0 text-white text-center mt-3">Add Produk</h1>
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="mb-0 text-white">Add Produk</h1>
                     
                     <a href="/crudproduk" class="btn btn-primary">List produk</a>
                 </div>

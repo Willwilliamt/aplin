@@ -41,7 +41,7 @@
     </style>
     <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-PtWwnPya47G5ddgV"></script>
+        data-client-key="SB-Mid-client-HBZnyp6lCehdke1N"></script>
 </head>
 <body>
     <div class="container box mt-5 p-5">

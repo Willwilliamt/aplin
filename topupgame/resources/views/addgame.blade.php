@@ -50,6 +50,7 @@
 <body>
     <div class="d-flex justify-content-center" style="height: 100vh; align-items: flex-start; padding-top: 10vh;">
         <div class="container w-50 p-5 box">
+            <a href="/securityadmin"><button class="btn btn-primary">Back</button></a>
             <h1 class="text-center text-white">Add Game</h1><br>
             <form action="game/insert" method="POST" enctype="multipart/form-data">
                 @csrf
