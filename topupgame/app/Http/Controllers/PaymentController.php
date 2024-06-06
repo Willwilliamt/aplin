@@ -15,29 +15,29 @@ class PaymentController extends Controller
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-    $orderId = uniqid();
-    $grossAmount = $request->product_price * $request->quantity; // Calculate the total amount based on the product price and quantity
+        $orderId = uniqid();
+        $grossAmount = $request->product_price * $request->quantity;
 
         $transactionDetails = [
             'order_id' => $orderId,
             'gross_amount' => $grossAmount,
         ];
 
-    $itemDetails = [
-        [
-            'id' => $request->product_id,
-            'price' => $request->product_price,
-            'quantity' => $request->quantity,
-            'name' => 'Product Name', // Example: get product name from DB
-        ],
-    ];
+        $itemDetails = [
+            [
+                'id' => $request->product_id,
+                'price' => $request->product_price,
+                'quantity' => $request->quantity,
+                'name' => 'Product Name',
+            ],
+        ];
 
-    $customerDetails = [
-        'first_name' => 'Customer', // Example: get customer details from request or DB
-        'last_name' => 'Name',
-        'email' => 'customer@example.com',
-        'phone' => '081234567890',
-    ];
+        $customerDetails = [
+            'first_name' => 'Customer',
+            'last_name' => 'Name',
+            'email' => 'customer@example.com',
+            'phone' => '081234567890',
+        ];
 
         $transaction = [
             'transaction_details' => $transactionDetails,
@@ -45,14 +45,31 @@ class PaymentController extends Controller
             'item_details' => $itemDetails,
         ];
 
-    try {
-        $snapToken = Snap::getSnapToken($transaction);
-        return response()->json(['token' => $snapToken]);
-    } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()]);
+        try {
+            $snapToken = Snap::getSnapToken($transaction);
+            return response()->json(['token' => $snapToken]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function purchase(Request $request, $id_game)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'zone_id' => 'required',
+            'quantity' => 'required|integer|min:1',
+            'snap_token' => 'required'
+        ]);        
+
+        TransaksiTopUpGame::create([
+            'id_user' => $request->user_id,
+            'game_name' => Game::find($id_game)->name, 
+            'jumlah_topup' => $request->quantity,
+            'Tanggal_transaksi' => now(),
+        ]);
+
+        return redirect()->route('home')->with('success', 'Transaction successful');
     }
 }
 
-
-   
-}
