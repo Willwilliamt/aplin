@@ -50,9 +50,9 @@
                     {{ $item->status }}
                 @endif</td>
                 <td>
-                    <form action="{{ route('confirmTransaction', $item->id_consign) }}" method="post">
+                    <form action="{{ route('confirmTransaction', $item->id_consign) }}" method="get">
                         @csrf
-                        @method('PATCH')
+                        
                         <button type="submit" class="btn btn-primary">Confirm</button>
                     </form>
                 </td>
@@ -149,9 +149,9 @@
                     {{ $item->status }}
                 @endif</td>
                 <td>
-                    <form action="" method="post">
+                    <form action="{{ route('confirmTransaction2', $item->id_consign) }}" method="get">
                         @csrf
-                        @method('PATCH')
+                        
                         <button type="submit" class="btn btn-primary">Confirm</button>
                     </form>
                 </td>

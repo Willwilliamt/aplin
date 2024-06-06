@@ -137,10 +137,13 @@ Route::controller(GameController::class)->prefix('games')->group(function () {
 Route::post('/buyconsignment',[ConsignmentController::class,'buyview']);
 Route::post('/buybarang',[ConsignmentController::class,'buybarang']);
 
-Route::get('/transaksiconsign',[ConsignmentController::class,'showadmin']);
+Route::get('/transaksiconsign',[ConsignmentController::class,'showadmin'])->name('transaksiconsign');
 Route::get('/userconsign',[ConsignmentController::class,'showuser']);
 Route::get('/sellerconsign',[ConsignmentController::class,'showseller']);
-Route::patch('/confirm-transaction/{id}', [ConsignmentController::class, 'confirmTransaction'])->name('confirmTransaction');
+Route::get('/confirm-transaction/{id}', [ConsignmentController::class, 'confirmTransaction'])->name('confirmTransaction');
+Route::get('/confirm-transaction2/{id}', [ConsignmentController::class, 'confirmTransaction2'])->name('confirmTransaction2');
+Route::get('/berikan-buyer/{id}', [ConsignmentController::class, 'berikanBuyer'])->name('berikanBuyer');
+Route::get('/sellerconsign', [ConsignmentController::class, 'showseller'])->name('showseller');
 
 Route::get('/consignment/search', [ConsignmentController::class, 'search']);
 

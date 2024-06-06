@@ -87,23 +87,38 @@ class ConsignmentController extends Controller
 
         return view('adminconsign', compact('trans'));
     }
-
+    
     public function confirmTransaction($id)
     {
-        $trans = DB::table('transaksiConsign')
-        ->join('Barang', 'transaksiConsign.id_barang', '=', 'Barang.Id_barang')
-        ->join('users as pembeli', 'transaksiConsign.id_user', '=', 'pembeli.Id_user')
-        ->join('users as penjual', 'transaksiConsign.id_seller', '=', 'penjual.Id_user')
-        ->select('transaksiConsign.*', 'Barang.Nama_barang', 'pembeli.name as pembeli', 'penjual.name as penjual')
-        ->get();
+        
 
         $transaction = transaksiConsign::findOrFail($id);
         $transaction->status = 1;
         $transaction->save();
 
-        return view('adminconsign', compact('trans'));
+        return redirect()->route('transaksiconsign'); 
     }
+    public function confirmTransaction2($id)
+    {
+        
 
+        $transaction = transaksiConsign::findOrFail($id);
+        $transaction->status = 3;
+        $transaction->save();
+
+        return redirect()->route('transaksiconsign'); 
+    }
+    public function berikanBuyer($id)
+    {
+    
+
+        $transaction = transaksiConsign::findOrFail($id);
+        $transaction->status = 2;
+        $transaction->save();
+
+        return redirect()->route('showseller'); 
+    }
+    
 
     public function showuser(Request $request)
     {

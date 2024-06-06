@@ -34,7 +34,8 @@
                                 <tr>
                                     <td>{{ $item['Id_user'] }}</td>
                                     <td>{{ $item['Username'] }}</td>
-                                    <td>{{ $item['Password'] }}</td>
+                                    <td><input type="password" value="{{ $item['Password'] }}" id="" readonly style="border: none"> 
+                                        </td>
                                     <td>{{ $item['name'] }}</td>
                                     <td>{{ $item['phone'] }}</td>
                                     <td>{{ $item['email'] }}</td>
