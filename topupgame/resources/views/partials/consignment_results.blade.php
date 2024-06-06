@@ -6,7 +6,7 @@
                     <img src="{{ asset('uploads/barang/' . $index->image) }}" class="card-img-top" alt="..." style="width: 100%; height: 150px;">
                     <div class="card-body">
                         <h3 class="card-title">{{ $index->Nama_barang }}</h3>
-                        <h5 class="card-title">{{ $index->Harga_barang }}</h5>
+                        <h5 class="card-title">Rp {{ $index->Harga_barang }}</h5>
                         <p class="card-text">{{ $index->deskripsi }}</p>
                         <form action="/buyconsignment" method="POST">
                             @csrf
