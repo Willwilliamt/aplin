@@ -45,10 +45,12 @@
 </head>
 <body>
     <div class="container box mt-5 p-5">
+        <a href="{{ url('/') }}" class="btn btn-primary mb-3">Back to Home</a>
         <div class="game-info mb-3">
             <img src="{{ asset('uploads/game/' . $game->image) }}" class="game-image" alt="{{ $game->name }}">
             <h1>Quick Buy - {{ $game->name }}</h1>
         </div>
+        
 
         <div class="dropdown-container mb-3">
             <div class="mb-3">
