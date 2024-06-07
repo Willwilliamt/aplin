@@ -28,7 +28,7 @@
             color: #495057;
         }
         footer{
-            height: 40vh;
+            height: 50vh;
         }
         .box{
             background: #c3d8e4;
@@ -99,4 +99,5 @@
             </form>
         </div>
     </div>
+    <footer></footer>
 @endsection

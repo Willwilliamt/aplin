@@ -10,10 +10,10 @@
 
     footer {
         flex-shrink: 0;
-        background-color: #f8f9fa;
+        /* background-color: #f8f9fa; */
         padding: 10px;
         width: 100%;
-        height: 40vh;
+        height: 50vh;
     }
     tbody {
         background-color: #8a8a8a;
